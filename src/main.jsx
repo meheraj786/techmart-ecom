@@ -9,7 +9,7 @@ import RootLayout from './layouts/RootLayout.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <RootLayout/>,
+    element: <RootLayout />,
   },
 ]);
 

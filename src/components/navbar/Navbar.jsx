@@ -5,7 +5,7 @@ import Logo from '../../layouts/Logo'
 import { NavLink } from 'react-router'
 import { GiLoveHowl } from 'react-icons/gi'
 import { PiCarThin } from 'react-icons/pi'
-import { BiCart, BiHeart } from 'react-icons/bi'
+import { BiCart, BiHeart, BiUser } from 'react-icons/bi'
 
 
 const Navbar = () => {
@@ -43,8 +43,15 @@ const Navbar = () => {
       </Flex>
       <Flex className="justify-end gap-x-5">
         <input type="text" className='bg-[#F5F5F5] px-5 py-3 pr-[70px] rounded-s' placeholder='What are you looking for?' />
-        <BiHeart/>
-        <BiCart/>
+        <span className='p-[10px] cursor-pointer hover:bg-primary rounded-full transition-colors duration-150 hover:text-white'>
+        <BiHeart size={26}/>
+        </span>
+        <span className='p-[10px] cursor-pointer hover:bg-primary rounded-full transition-colors duration-150 hover:text-white'>
+        <BiCart size={26}/>
+        </span>
+        <span className='p-[10px] cursor-pointer hover:bg-primary rounded-full transition-colors duration-150 hover:text-white'>
+        <BiUser size={26}/>
+        </span>
       </Flex>
       </Flex>
       </Container>
