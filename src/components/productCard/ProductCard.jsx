@@ -12,15 +12,15 @@ const ProductCard = ({ product }) => {
 
   return (
     <div className="w-[270px] ">
-      <div className="w-full h-[250px] relative group overflow-hidden bg-[#F5F5F5] rounded-sm text-transparent">
-        {(product.offerprice && product.offerprice > 0) && (
+      <div className="w-full h-[250px] relative group overflow-hidden bg-[#F5F5F5] rounded-sm flex justify-center items-center text-transparent">
+        {product.offerprice && product.offerprice > 0 && (
           <span className="px-3 py-1 absolute top-3 left-3 bg-primary rounded-sm text-white text-[12px]">
             -{Math.round((product.offerprice / product.mainprice) * 100)}%
           </span>
         )}
         <img
-          src=""
-          className="object-cover object-center group-hover:scale-105"
+          src={product.image}
+          className="object-cover transition-all duration-250 object-center group-hover:scale-120"
           alt=""
         />
         <div className="bg-black cursor-pointer group-hover:translate-y-0 transition-all duration-300 absolute bottom-0 translate-y-full  left-0 rounded-b-sm text-white text-center font-medium py-2 w-full">
@@ -47,7 +47,7 @@ const ProductCard = ({ product }) => {
           <BiSolidStar color="#FFAD33" />
         ))}
         {noStar.map(() => (
-          <BiSolidStar  className="text-black/25" />
+          <BiSolidStar className="text-black/25" />
         ))}
 
         {/* <BiSolidStar color='#FFAD33'/>
@@ -57,6 +57,13 @@ const ProductCard = ({ product }) => {
           ({product.rating})
         </span>
       </Flex>
+      {product?.colors?.map((color, i) => (
+        <span
+          key={i}
+          style={{ backgroundColor: color }}
+          className="w-4 h-4 mt-2 rounded-full inline-block mr-1"
+        ></span>
+      ))}
     </div>
   );
 };
