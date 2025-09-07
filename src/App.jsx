@@ -3,6 +3,7 @@ import './App.css'
 import Banner from './components/banner/Banner'
 import FlashSale from './components/FlashSale/FlashSale'
 import Categories from './components/categories/Categories'
+import BestSelling from './components/bestSelling/BestSelling'
 
 function App() {
 
@@ -11,6 +12,7 @@ function App() {
     <Banner/>
     <FlashSale/>
     <Categories/>
+    <BestSelling/>
     </>
   )
 }

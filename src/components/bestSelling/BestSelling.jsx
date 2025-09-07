@@ -1,0 +1,41 @@
+import React from 'react'
+import Container from '../../layouts/Container'
+import CountdownTimer from '../countdowntimer/CountdownTimer'
+import Flex from '../../layouts/Flex'
+import { products } from '../../utils/products'
+import { BiSolidStar, BiStar } from 'react-icons/bi'
+import ProductCard from '../productCard/ProductCard'
+import Button from '../../layouts/Button'
+
+const BestSelling = () => {
+  return (
+    <div className='font-body relative pt-[60px] pb-[60px]'>
+      <Container>
+        <div className='text-primary mb-5 flex items-center justify-start '>
+        <div className='w-5 h-10 rounded-sm bg-primary mr-4'></div>
+    <span className='font-semibold'>This Month</span>
+        </div>
+        <Flex>
+          <h3>Best Selling Products</h3>
+          <Button>
+            View All
+          </Button>
+        </Flex>
+        <Flex className="mb-[60px] mt-[60px]">
+        {
+          products.filter((p)=>p.status=="bestSelling").slice(0,4).map((product)=>(
+            <ProductCard product={product}/>
+          ))
+        }
+        </Flex>
+        <div className='text-center'>
+        <Button>View All Products</Button>
+
+        </div>
+
+      </Container>
+    </div>
+  )
+}
+
+export default BestSelling
