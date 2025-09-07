@@ -9,7 +9,7 @@ import Button from '../../layouts/Button'
 
 const FlashSale = () => {
   return (
-    <div className='font-body pb-[60px]'>
+    <div className='font-body relative pb-[60px]'>
       <Container>
         <div className='text-primary  flex items-center justify-start '>
         <div className='w-5 h-10 rounded-sm bg-primary mr-4'></div>
@@ -30,7 +30,7 @@ const FlashSale = () => {
         <Button>View All Products</Button>
 
         </div>
-
+<div className='w-[1170px] h-[1px] mx-auto absolute bottom-0 bg-black/30'></div>
 
       </Container>
     </div>
