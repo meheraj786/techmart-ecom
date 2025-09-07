@@ -142,7 +142,7 @@ const Categories = () => {
         <Flex>
           <h3>Browse By Category</h3>
         </Flex>
-        <div className="flex mt-[60px] flex-wrap gap-6 ">
+        <div className="flex mt-[60px] justify-center flex-wrap gap-6 ">
           {categories.map((category, index) => (
             <Link key={index} to={category.link}>
             <div
