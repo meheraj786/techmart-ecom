@@ -1,0 +1,64 @@
+import React from "react";
+import Flex from "../../layouts/Flex";
+import { BiSolidStar } from "react-icons/bi";
+
+const ProductCard = ({ product }) => {
+  const star = [];
+  const noStar = [1, 2, 3, 4, 5];
+  for (let i = 0; i < product.stars; i++) {
+    star.push(i);
+    noStar.pop();
+  }
+
+  return (
+    <div className="w-[270px] ">
+      <div className="w-full h-[250px] relative group overflow-hidden bg-[#F5F5F5] rounded-sm text-transparent">
+        {(product.offerprice && product.offerprice > 0) && (
+          <span className="px-3 py-1 absolute top-3 left-3 bg-primary rounded-sm text-white text-[12px]">
+            -{Math.round((product.offerprice / product.mainprice) * 100)}%
+          </span>
+        )}
+        <img
+          src=""
+          className="object-cover object-center group-hover:scale-105"
+          alt=""
+        />
+        <div className="bg-black cursor-pointer group-hover:translate-y-0 transition-all duration-300 absolute bottom-0 translate-y-full  left-0 rounded-b-sm text-white text-center font-medium py-2 w-full">
+          Add To Cart
+        </div>
+      </div>
+      <p className="font-medium mt-4 mb-2">{product.title}</p>
+      <Flex className="justify-start gap-x-[12px]">
+        {product.offerprice && product.offerprice > 0 ? (
+          <>
+            <span className="text-primary font-medium">
+              ${product.offerprice}
+            </span>
+            <span className="line-through text-black/50 font-medium">
+              ${product.mainprice}
+            </span>
+          </>
+        ) : (
+          <span className="text-primary font-medium">${product.mainprice}</span>
+        )}
+      </Flex>
+      <Flex className="justify-start mt-2 gap-x-1">
+        {star.map(() => (
+          <BiSolidStar color="#FFAD33" />
+        ))}
+        {noStar.map(() => (
+          <BiSolidStar  className="text-black/25" />
+        ))}
+
+        {/* <BiSolidStar color='#FFAD33'/>
+          <BiSolidStar color='#FFAD33'/>
+          <BiSolidStar color='#FFAD33'/> */}
+        <span className="text-black/50 text-[12px] font-semibold">
+          ({product.rating})
+        </span>
+      </Flex>
+    </div>
+  );
+};
+
+export default ProductCard;

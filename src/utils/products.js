@@ -7,17 +7,21 @@ export const products = [
     offerprice: 280,
     mainprice: 400,
     category: "electronics",
-    status: "flashSale"
+    status: "flashSale",
+    rating: 120,     
+    stars: 2        
   },
   {
     id: 2,
     image: "",
     title: "AK-900 Wired Keyboard",
     description: "",
-    offerprice: 960,
+    offerprice: 0,
     mainprice: 1160,
     category: "electronics",
-    status: "flashSale"
+    status: "flashSale",
+    rating: 80,
+    stars: 4.2
   },
   {
     id: 3,
@@ -27,7 +31,9 @@ export const products = [
     offerprice: 370,
     mainprice: 400,
     category: "electronics",
-    status: "flashSale"
+    status: "flashSale",
+    rating: 150,
+    stars: 4.7
   },
   {
     id: 4,
@@ -37,7 +43,9 @@ export const products = [
     offerprice: 375,
     mainprice: 400,
     category: "furniture",
-    status: "flashSale"
+    status: "flashSale",
+    rating: 60,
+    stars: 4.0
   },
   {
     id: 5,
@@ -47,7 +55,9 @@ export const products = [
     offerprice: 375,
     mainprice: 400,
     category: "furniture",
-    status: "flashSale"
+    status: "flashSale",
+    rating: 95,
+    stars: 4.3
   },
   {
     id: 6,
@@ -57,7 +67,9 @@ export const products = [
     offerprice: 260,
     mainprice: 360,
     category: "fashion",
-    status: "bestSelling"
+    status: "bestSelling",
+    rating: 200,
+    stars: 4.6
   },
   {
     id: 7,
@@ -67,7 +79,9 @@ export const products = [
     offerprice: 960,
     mainprice: 1160,
     category: "fashion",
-    status: "bestSelling"
+    status: "bestSelling",
+    rating: 50,
+    stars: 4.1
   },
   {
     id: 8,
@@ -77,7 +91,9 @@ export const products = [
     offerprice: 160,
     mainprice: 170,
     category: "electronics",
-    status: "bestSelling"
+    status: "bestSelling",
+    rating: 140,
+    stars: 4.4
   },
   {
     id: 9,
@@ -87,7 +103,9 @@ export const products = [
     offerprice: 360,
     mainprice: 400,
     category: "furniture",
-    status: "bestSelling"
+    status: "bestSelling",
+    rating: 70,
+    stars: 3.9
   },
   {
     id: 10,
@@ -97,7 +115,9 @@ export const products = [
     offerprice: 100,
     mainprice: 120,
     category: "pets",
-    status: "normal"
+    status: "normal",
+    rating: 30,
+    stars: 4.0
   },
   {
     id: 11,
@@ -107,7 +127,9 @@ export const products = [
     offerprice: 360,
     mainprice: 500,
     category: "electronics",
-    status: "normal"
+    status: "normal",
+    rating: 250,
+    stars: 4.8
   },
   {
     id: 12,
@@ -117,7 +139,9 @@ export const products = [
     offerprice: 700,
     mainprice: 1000,
     category: "electronics",
-    status: "normal"
+    status: "normal",
+    rating: 180,
+    stars: 4.5
   },
   {
     id: 13,
@@ -127,7 +151,9 @@ export const products = [
     offerprice: 500,
     mainprice: 600,
     category: "cosmetics",
-    status: "normal"
+    status: "normal",
+    rating: 40,
+    stars: 4.1
   },
   {
     id: 14,
@@ -137,7 +163,9 @@ export const products = [
     offerprice: 960,
     mainprice: 1200,
     category: "toys",
-    status: "normal"
+    status: "normal",
+    rating: 65,
+    stars: 4.2
   },
   {
     id: 15,
@@ -147,7 +175,9 @@ export const products = [
     offerprice: 1160,
     mainprice: 1300,
     category: "sports",
-    status: "normal"
+    status: "normal",
+    rating: 75,
+    stars: 4.4
   },
   {
     id: 16,
@@ -157,7 +187,9 @@ export const products = [
     offerprice: 550,
     mainprice: 600,
     category: "electronics",
-    status: "normal"
+    status: "normal",
+    rating: 90,
+    stars: 4.3
   },
   {
     id: 17,
@@ -167,6 +199,8 @@ export const products = [
     offerprice: 660,
     mainprice: 750,
     category: "fashion",
-    status: "normal"
+    status: "normal",
+    rating: 110,
+    stars: 4.5
   }
 ];
