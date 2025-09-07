@@ -8,7 +8,7 @@ import Button from "../../layouts/Button";
 
 const OurProducts = () => {
   return (
-    <div className="font-body relative pt-[60px] pb-[60px]">
+    <div className="font-body relative pt-[60px] pb-[140px]">
       <Container>
         <div className="text-primary mb-5 flex items-center justify-start ">
           <div className="w-5 h-10 rounded-sm bg-primary mr-4"></div>
