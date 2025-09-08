@@ -15,7 +15,7 @@ const ProductCard = ({ product }) => {
       <div className="w-full h-[250px] relative group overflow-hidden bg-[#F5F5F5] rounded-sm flex justify-center items-center text-transparent">
         {product.offerprice && product.offerprice > 0 && (
           <span className="px-3 py-1 absolute top-3 left-3 bg-primary rounded-sm text-white text-[12px]">
-            -{Math.round((product.offerprice / product.mainprice) * 100)}%
+            -{Math.round(((product.mainprice - product.offerprice) / product.mainprice) * 100)}%
           </span>
         )}
         <img
