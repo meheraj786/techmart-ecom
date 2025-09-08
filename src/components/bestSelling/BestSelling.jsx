@@ -17,9 +17,9 @@ const BestSelling = () => {
         </div>
         <Flex>
           <h3>Best Selling Products</h3>
-          <Button>
+          {/* <Button>
             View All
-          </Button>
+          </Button> */}
         </Flex>
         <Flex className="mb-[60px] mt-[60px]">
         {

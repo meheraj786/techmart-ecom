@@ -30,7 +30,7 @@ const FlashSale = () => {
         <Button>View All Products</Button>
 
         </div>
-<div className='w-[1170px] h-[1px] mx-auto absolute bottom-0 bg-black/30'></div>
+<div className='xl:w-[1170px] w-full h-[1px] mx-auto absolute bottom-0 bg-black/30'></div>
 
       </Container>
     </div>

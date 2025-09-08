@@ -3,6 +3,7 @@ import Container from "../../layouts/Container";
 import Flex from "../../layouts/Flex";
 import { BiArrowToRight } from "react-icons/bi";
 import { products } from "../../utils/products";
+import { Link } from "react-router";
 
 const Banner = () => {
   const categories = [
@@ -77,7 +78,9 @@ const Banner = () => {
     Save upto {Math.round(((product.mainprice - product.offerprice) / product.mainprice) * 100)}%
                     </h2>
                     <button className="font-medium flex items-center gap-x-2 mt-3">
+                      <Link to={`/product/${product.id}`}>
                       <span className="border-b border-white">Shop Now </span>
+                      </Link>
                       <BiArrowToRight size={24} />
                     </button>
                   </div>

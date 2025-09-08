@@ -1,6 +1,7 @@
 import React from "react";
 import Flex from "../../layouts/Flex";
 import { BiSolidStar } from "react-icons/bi";
+import { Link } from "react-router";
 
 const ProductCard = ({ product }) => {
   const star = [];
@@ -18,16 +19,20 @@ const ProductCard = ({ product }) => {
             -{Math.round(((product.mainprice - product.offerprice) / product.mainprice) * 100)}%
           </span>
         )}
+        <Link to={`/product/${product.id}`}>
         <img
           src={product.image}
           className="object-cover transition-all duration-250 object-center group-hover:scale-120"
           alt=""
         />
+        </Link>
         <div className="bg-black cursor-pointer group-hover:translate-y-0 transition-all duration-300 absolute bottom-0 translate-y-full  left-0 rounded-b-sm text-white text-center font-medium py-2 w-full">
           Add To Cart
         </div>
       </div>
-      <p className="font-medium mt-4 mb-2">{product.title}</p>
+      <Link to={`/product/${product.id}`}>
+      <p className="font-medium hover:text-gray-500 mt-4 mb-2">{product.title}</p>
+      </Link>
       <Flex className="justify-start gap-x-[12px]">
         {product.offerprice && product.offerprice > 0 ? (
           <>
@@ -49,10 +54,6 @@ const ProductCard = ({ product }) => {
         {noStar.map(() => (
           <BiSolidStar className="text-black/25" />
         ))}
-
-        {/* <BiSolidStar color='#FFAD33'/>
-          <BiSolidStar color='#FFAD33'/>
-          <BiSolidStar color='#FFAD33'/> */}
         <span className="text-black/50 text-[12px] font-semibold">
           ({product.rating})
         </span>
