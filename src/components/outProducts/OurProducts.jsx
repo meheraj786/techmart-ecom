@@ -21,7 +21,7 @@ const OurProducts = () => {
           </Button> */}
         </Flex>
         <Flex className="mb-[60px] gap-y-7 mt-[60px]">
-          {products.slice(0, 8).map((product) => (
+          {products.filter((p)=>p.status!=="flashSale").slice(0, 8).map((product) => (
             <ProductCard product={product} />
           ))}
         </Flex>

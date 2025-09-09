@@ -1,5 +1,6 @@
 import React,{ useState, useEffect } from 'react';
 import Container from '../../layouts/Container';
+import music from '../../../public/music.png'
 
 export default function SingleOfferBanner() {
   const [timeLeft, setTimeLeft] = useState({
@@ -29,9 +30,9 @@ export default function SingleOfferBanner() {
   }, []);
 
   return (
-    <div className=" font-body text-white relative overflow-hidden">
+    <div className=" font-body  text-white relative overflow-hidden">
       <Container>
-      <div className="bg-black">
+      <div className="bg-black group">
       <div className="container mx-auto px-[56px] py-12">
         <div className="flex items-center justify-between">
           <div className="flex-1 max-w-lg">
@@ -87,6 +88,10 @@ export default function SingleOfferBanner() {
             <button className="bg-green-500 hover:bg-green-600 text-white px-8 py-3 rounded-md font-medium transition-colors duration-200">
               Buy Now!
             </button>
+          </div>
+          <div className='relative'>
+            <img src={music} className='relative z-10' alt="" />
+            <div className='absolute w-0 h-0 group-hover:w-full group-hover:h-full top-1/2 left-1/2 -translate-1/2 transition-all duration-300 bg-white/20 rounded-full blur-3xl '></div>
           </div>
         </div>
       </div>

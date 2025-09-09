@@ -86,11 +86,11 @@ const Banner = () => {
                   </div>
 
                   {/* Right side image */}
-                  <div className="pr-[100px]">
+                  <div className="pr-[100px] relative">
                     <img
                       src={product.image}
                       alt={product.title}
-                      className="w-[300px] group-hover:scale-125 transition-all duration-200 h-[250px] object-contain"
+                      className="w-[300px] relative z-10 group-hover:scale-125 transition-all duration-200 h-[250px] object-contain"
                     />
                   </div>
                 </div>
