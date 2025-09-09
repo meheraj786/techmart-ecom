@@ -1,6 +1,10 @@
 import React from "react";
 import Container from "../../layouts/Container";
 import Flex from "../../layouts/Flex";
+import img1 from "../../../public/arrivalImg1.png";
+import img2 from "../../../public/arrivalImg2.png";
+import img3 from "../../../public/arrivalImg3.png";
+import img4 from "../../../public/arrivalImg4.png";
 
 const Featured = () => {
   return (
@@ -14,8 +18,8 @@ const Featured = () => {
           <h3>New Arrival</h3>
         </Flex>
         <div className="grid grid-cols-2 gap-x-[30px]">
-          <div className="bg-black relative h-[600px]">
-            <div className="absolute bottom-8 left-8">
+          <div className="bg-black group relative h-[600px]">
+            <div className="absolute bottom-8 z-10 left-8">
               <h4 className="text-2xl text-white font-bold mb-3">
                 PlayStation 5
               </h4>
@@ -26,49 +30,69 @@ const Featured = () => {
                 Shop Now
               </p>
             </div>
+            <img
+              src={img1}
+              className="absolute bottom-0 group-hover:scale-80 transition-all duration-200 left-1/2 -translate-x-1/2 z-0"
+              alt=""
+            />
           </div>
           <div className=" h-[600px]">
             <div className="grid grid-rows-2 gap-y-[30px]">
-              <div className="bg-black relative h-[285px]">
-                <div className="absolute bottom-8 left-8">
+              <div className="bg-black group relative h-[285px]">
+                <div className="absolute bottom-8 z-10 left-8">
                   <h4 className="text-2xl text-white font-bold mb-3">
-                    PlayStation 5
+                    Women’s Collections
                   </h4>
                   <p className="text-gray-300 mb-4 text-[14px] leading-relaxed">
-                    Black and White version of the PS5 coming out on sale.
+                    Featured woman collections that give you another vibe.
                   </p>
                   <p className="text-white text-[16px] underline cursor-pointer hover:text-gray-300 transition-colors">
                     Shop Now
                   </p>
                 </div>
+                <img
+                  src={img2}
+                  className="absolute group-hover:scale-80 transition-all duration-200 bottom-0 right-0 z-0"
+                  alt=""
+                />
               </div>
               <div className=" h-[285px]">
                 <div className="grid grid-cols-2 gap-x-[30px]">
-                  <div className="bg-black relative h-[285px]">
-                    <div className="absolute bottom-8 left-8">
+                  <div className="bg-black group relative h-[285px]">
+                    <div className="absolute z-10 bottom-8 left-8">
                       <h4 className="text-2xl text-white font-bold mb-3">
-                        PlayStation 5
+                        Speakers
                       </h4>
                       <p className="text-gray-300 text-[14px] mb-4 leading-relaxed">
-                        Black and White version of the PS5 coming out on sale.
+                        Amazon wireless speakers
                       </p>
                       <p className="text-white underline cursor-pointer hover:text-gray-300 transition-colors">
                         Shop Now
                       </p>
                     </div>
+                    <img
+                      src={img3}
+                      className="absolute group-hover:scale-80 transition-all duration-200 top-1/2 left-1/2 -translate-1/2 z-0"
+                      alt=""
+                    />
                   </div>
-                  <div className="bg-black relative h-[285px]">
-                    <div className="absolute bottom-8 left-8">
+                  <div className="bg-black group relative h-[285px]">
+                    <div className="absolute z-10 bottom-8 left-8">
                       <h4 className="text-2xl text-white font-bold mb-3">
-                        PlayStation 5
+                        Perfume
                       </h4>
                       <p className="text-gray-300 text-[14px] mb-4 leading-relaxed">
-                        Black and White version of the PS5 coming out on sale.
+                        GUCCI INTENSE OUD EDP
                       </p>
                       <p className="text-white underline cursor-pointer hover:text-gray-300 transition-colors">
                         Shop Now
                       </p>
                     </div>
+                    <img
+                      src={img4}
+                      className="absolute group-hover:scale-80 transition-all duration-200 top-1/2 left-1/2 -translate-1/2 z-0"
+                      alt=""
+                    />
                   </div>
                 </div>
               </div>
