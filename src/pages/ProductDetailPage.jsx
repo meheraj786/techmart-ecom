@@ -19,6 +19,12 @@ const ProductDetailPage = () => {
     noStar.pop();
   }
 
+  const relatedProducts=products.filter((p)=>{
+    if (p.category==product.category && p.id!==product.id) {
+      return p
+    }
+  })
+
   return (
     <Container>
       <div className="p-6 pt-[130px] pb-[140px] font-body grid grid-cols-1 md:grid-cols-2 gap-10">
@@ -166,7 +172,7 @@ const ProductDetailPage = () => {
         </Flex>
         <Flex className="mb-[60px] justify-start gap-x-[30px] mt-[60px]">
         {
-          products.filter((p)=>p.category==product.category).slice(0,4).map((product)=>(
+          relatedProducts.slice(0,4).map((product)=>(
             <ProductCard product={product}/>
           ))
         }

@@ -20,7 +20,7 @@ const OurProducts = () => {
             View All
           </Button> */}
         </Flex>
-        <Flex className="mb-[60px] gap-y-7 mt-[60px]">
+        <Flex className="mb-[60px] items-start gap-y-7 mt-[60px]">
           {products.filter((p)=>p.status!=="flashSale").slice(0, 8).map((product) => (
             <ProductCard product={product} />
           ))}

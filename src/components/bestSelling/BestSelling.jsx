@@ -21,7 +21,7 @@ const BestSelling = () => {
             View All
           </Button> */}
         </Flex>
-        <Flex className="mb-[60px] mt-[60px]">
+        <Flex className="mb-[60px] items-start mt-[60px]">
         {
           products.filter((p)=>p.status=="bestSelling").slice(0,4).map((product)=>(
             <ProductCard product={product}/>

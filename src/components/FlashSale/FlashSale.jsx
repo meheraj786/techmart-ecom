@@ -19,7 +19,7 @@ const FlashSale = () => {
           <h3>Flash Sales</h3>
           <CountdownTimer/>
         </Flex>
-        <Flex className="mb-[60px]">
+        <Flex className="mb-[60px] items-start">
         {
           products.filter((p)=>p.status=="flashSale").slice(0,4).map((product)=>(
             <ProductCard product={product}/>
