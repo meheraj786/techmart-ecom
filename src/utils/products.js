@@ -99,7 +99,7 @@ export const products = [
     stars: 4.6,
     colors: ["#000000", "#4A90E2"],
     sizes: ["XS", "S", "M", "L", "XL"],
-    isStock: true
+    isStock: false
   },
   {
     id: 7,
