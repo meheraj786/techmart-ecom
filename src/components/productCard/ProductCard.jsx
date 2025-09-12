@@ -14,7 +14,7 @@ const ProductCard = ({ product }) => {
   return (
     <div className="w-[270px] ">
       <div className="w-full h-[250px] relative group overflow-hidden bg-[#F5F5F5] rounded-sm flex justify-center items-center text-transparent">
-        {product.offerprice && product.offerprice > 0 && (
+        {product.offerprice && product.offerprice > 0 && product.isStock && (
           <span className="px-3 py-1 absolute top-3 left-3 bg-primary rounded-sm text-white text-[12px]">
             -{Math.round(((product.mainprice - product.offerprice) / product.mainprice) * 100)}%
           </span>
@@ -34,7 +34,7 @@ const ProductCard = ({ product }) => {
       <p className="font-medium hover:text-gray-500 mt-4 mb-2">{product.title}</p>
       </Link>
       <Flex className="justify-start gap-x-[12px]">
-        {product.offerprice && product.offerprice > 0 ? (
+        {product.offerprice && product.offerprice > 0 && product.isStock ? (
           <>
             <span className="text-primary font-medium">
               ${product.offerprice}
@@ -43,6 +43,8 @@ const ProductCard = ({ product }) => {
               ${product.mainprice}
             </span>
           </>
+        ) : !product.isStock ? (
+          <span className="text-primary/80 font-medium">Out Of Stock</span>
         ) : (
           <span className="text-primary font-medium">${product.mainprice}</span>
         )}
