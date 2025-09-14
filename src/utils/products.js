@@ -40,7 +40,7 @@ export const products = [
     category: "electronics",
     status: "flashSale",
     rating: 80,
-    stars: 4.2,
+    stars: 3,
     sizes: false,
     isStock: true
   },
@@ -184,7 +184,7 @@ export const products = [
     rating: 180,
     stars: 4.5,
     sizes: false,
-    isStock: false
+    isStock: true
   },
   {
     id: 13,
@@ -255,6 +255,21 @@ export const products = [
     stars: 4.5,
     colors: ["#C0C0C0", "#000000"],
     sizes: ["XS", "S", "M", "L", "XL"],
+    isStock: true
+  },
+  {
+    id: 18,
+    image: img1,
+    title: "Tushar Bhai",
+    description: "Tushar bhai is very smart, dashing, handsome, intellectual",
+    offerprice: 0,
+    mainprice: 100000,
+    category: "fashion",
+    status: "bestSelling",
+    rating: 2000,
+    stars: 5,
+    colors: ["#C0C0C0", "#000000"],
+    sizes: false,
     isStock: true
   }
 ];

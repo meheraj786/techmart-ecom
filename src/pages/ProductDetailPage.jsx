@@ -67,7 +67,7 @@ const ProductDetailPage = () => {
 
           {/* Price */}
           <Flex className="justify-start gap-x-[12px]">
-            {product.offerprice && product.offerprice > 0 ? (
+            {product.offerprice && product.offerprice > 0 && product.isStock ? (
               <>
                 <span className="text-primary text-xl font-medium">
                   ${product.offerprice}
@@ -76,7 +76,7 @@ const ProductDetailPage = () => {
                   ${product.mainprice}
                 </span>
               </>
-            ) : (
+            ) : product.isStock && (
               <span className="text-primary text-xl font-medium">
                 ${product.mainprice}
               </span>
@@ -137,7 +137,7 @@ const ProductDetailPage = () => {
             {
               product.isStock ?             <Button>
               Buy Now
-            </Button> :  <Button className="bg-primary/60">
+            </Button> :  <Button  className="bg-primary/60 !hover:bg-primary/60">
               Out of Stock
             </Button>
             }
