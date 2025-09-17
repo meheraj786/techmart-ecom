@@ -10,7 +10,6 @@ import Featured from './components/featured/Featured'
 import ServiceFeatures from './components/serviceFeatures/ServiceFeatures'
 
 function App() {
-
   return (
     <>
     <Banner/>
