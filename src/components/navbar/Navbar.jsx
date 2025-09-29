@@ -2,7 +2,7 @@ import React from "react";
 import Flex from "../../layouts/Flex";
 import Container from "../../layouts/Container";
 import Logo from "../../layouts/Logo";
-import { NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
 import { GiLoveHowl } from "react-icons/gi";
 import { PiCarThin } from "react-icons/pi";
 import { BiCart, BiHeart, BiUser } from "react-icons/bi";
@@ -55,9 +55,9 @@ const Navbar = () => {
             <span className="p-[10px] cursor-pointer hover:bg-primary rounded-full transition-colors duration-150 hover:text-white">
               <BiCart size={26} />
             </span>
-            <span className="p-[10px] cursor-pointer hover:bg-primary rounded-full transition-colors duration-150 hover:text-white">
+            <Link to="/registration" className="p-[10px] cursor-pointer hover:bg-primary rounded-full transition-colors duration-150 hover:text-white">
               <BiUser size={26} />
-            </span>
+            </Link>
           </Flex>
         </Flex>
       </Container>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { FaStar, FaTruck, FaUndo } from "react-icons/fa";
 import Container from "../layouts/Container";
 import Button from "../layouts/Button";
