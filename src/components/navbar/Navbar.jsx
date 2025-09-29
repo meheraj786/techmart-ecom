@@ -23,7 +23,7 @@ const Navbar = () => {
     },
     {
       name: "Sign Up",
-      link: "/signup",
+      link: "/registration",
     },
   ];
   return (
@@ -55,7 +55,10 @@ const Navbar = () => {
             <span className="p-[10px] cursor-pointer hover:bg-primary rounded-full transition-colors duration-150 hover:text-white">
               <BiCart size={26} />
             </span>
-            <Link to="/registration" className="p-[10px] cursor-pointer hover:bg-primary rounded-full transition-colors duration-150 hover:text-white">
+            <Link
+              to="/registration"
+              className="p-[10px] cursor-pointer hover:bg-primary rounded-full transition-colors duration-150 hover:text-white"
+            >
               <BiUser size={26} />
             </Link>
           </Flex>

@@ -55,7 +55,6 @@ export default function Cart() {
           </div>
         </div>
       </div>
-
       <div className="max-w-6xl mx-auto px-4 py-8">
         <div className="bg-white rounded-lg shadow-sm">
           <div className="grid grid-cols-4 gap-4 p-6 border-b border-gray-200 font-medium text-gray-700">
