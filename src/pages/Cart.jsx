@@ -45,8 +45,8 @@ export default function Cart() {
   const total = subtotal + shipping;
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="bg-white ">
+    <div className="min-h-screen pb-[140px] pt-[60px] bg-gray-50">
+      <div className="">
         <div className="max-w-6xl mx-auto px-4 py-4">
           <div className="flex items-center text-sm text-gray-600">
             <Link to="/">Home</Link>
@@ -149,7 +149,9 @@ export default function Cart() {
             </div>
 
             <button className="w-full mt-6 px-6 py-3 bg-primary text-white rounded hover:bg-red-600 transition duration-200">
+              <Link to="/checkout">
               Proceed to checkout
+              </Link>
             </button>
           </div>
         </div>
