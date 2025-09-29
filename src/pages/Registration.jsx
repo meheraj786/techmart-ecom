@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import { Eye, EyeOff } from 'lucide-react';
+import Container from '../layouts/Container';
+import sideImg from '../../public/SideImage.png'
+import { Link } from 'react-router';
 
 export default function Registration() {
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
+    name: '',
     emailOrPhone: '',
     password: ''
   });
@@ -24,45 +28,13 @@ export default function Registration() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-100 to-blue-50 flex items-center justify-center p-4">
-      <div className="w-full max-w-5xl bg-white rounded-3xl shadow-xl overflow-hidden">
-        <div className="flex flex-col lg:flex-row min-h-[600px]">
+    <div className="py-[120px] font-body">
+      <Container>
+      <div className="w-full  bg-white  overflow-hidden">
+        <div className="flex flex-col lg:flex-row">
           
-          <div className="lg:w-1/2 bg-gradient-to-br from-slate-200 via-blue-100 to-slate-150 p-8 lg:p-12 flex items-center justify-center relative">
-            <div className="relative">
-              
-              <div className="relative z-10">
-                <div className="w-48 h-80 bg-gray-700 rounded-3xl shadow-2xl transform -rotate-6 relative overflow-hidden">
-                  <div className="absolute inset-2 bg-black rounded-2xl"></div>
-                  <div className="absolute top-4 left-1/2 transform -translate-x-1/2 w-12 h-1 bg-gray-600 rounded-full"></div>
-                  <div className="absolute top-4 right-6 w-2 h-2 bg-gray-600 rounded-full"></div>
-                </div>
-              </div>
-
-              <div className="absolute -left-12 top-8 z-20">
-                <div className="w-24 h-20 relative">
-                  <div className="w-16 h-12 border-4 border-gray-400 rounded-sm relative">
-                    <div className="absolute -top-2 -left-2 w-6 h-6 border-4 border-gray-400 rounded-tl-lg border-r-0 border-b-0"></div>
-                  </div>
-                  <div className="absolute -bottom-2 left-1 w-4 h-4 border-4 border-gray-400 rounded-full"></div>
-                  <div className="absolute -bottom-2 right-1 w-4 h-4 border-4 border-gray-400 rounded-full"></div>
-                </div>
-              </div>
-              <div className="absolute -right-8 bottom-12 flex space-x-2 z-5">
-                <div className="w-12 h-16 bg-pink-300 rounded-lg shadow-lg transform rotate-12">
-                  <div className="w-8 h-2 bg-pink-400 rounded-full mx-auto mt-2"></div>
-                </div>
-                <div className="w-10 h-14 bg-purple-300 rounded-lg shadow-lg transform -rotate-6">
-                  <div className="w-6 h-2 bg-purple-400 rounded-full mx-auto mt-2"></div>
-                </div>
-              </div>
-
-              <div className="absolute left-8 bottom-4 z-5">
-                <div className="w-8 h-12 bg-blue-300 rounded-lg shadow-lg transform rotate-45">
-                  <div className="w-4 h-1 bg-blue-400 rounded-full mx-auto mt-2"></div>
-                </div>
-              </div>
-            </div>
+          <div className="lg:w-1/2  flex items-center justify-center relative">
+<img src={sideImg} alt="" />
           </div>
 
           <div className="lg:w-1/2 p-8 lg:p-12 flex items-center justify-center">
@@ -78,6 +50,16 @@ export default function Registration() {
               </div>
               <div className="space-y-4">
                 
+                <div>
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="Name"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    className="w-full px-0 py-3 border-0 border-b border-gray-300 focus:border-gray-500 focus:outline-none text-gray-700 placeholder-gray-500 bg-transparent"
+                  />
+                </div>
                 <div>
                   <input
                     type="text"
@@ -109,7 +91,7 @@ export default function Registration() {
 
               <button
                 onClick={handleCreateAccount}
-                className="w-full bg-red-500 hover:bg-red-600 text-white font-medium py-3 rounded-md transition duration-200 mt-6 mb-4"
+                className="w-full bg-primary hover:bg-primary/90 cursor-pointer text-white font-medium py-3 rounded-md transition duration-200 mt-6 mb-4"
               >
                 Create Account
               </button>
@@ -130,15 +112,17 @@ export default function Registration() {
               <div className="text-center">
                 <p className="text-gray-600 text-sm">
                   Already have account?{' '}
-                  <a href="#" className="text-gray-900 underline hover:text-gray-700 font-medium">
+                  <Link to="/login" className="text-gray-900 underline hover:text-gray-700 font-medium">
                     Log in
-                  </a>
+                  </Link>
                 </p>
               </div>
             </div>
           </div>
         </div>
       </div>
+
+      </Container>
     </div>
   );
 }
