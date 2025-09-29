@@ -45,6 +45,7 @@ const ProductDetailPage = () => {
           </div>
         </div>
 
+
         {/* Right Section - Details */}
         <div className="flex flex-col">
           {/* Title */}
