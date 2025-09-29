@@ -6,6 +6,7 @@ import { products } from '../../utils/products'
 import { BiSolidStar, BiStar } from 'react-icons/bi'
 import ProductCard from '../productCard/ProductCard'
 import Button from '../../layouts/Button'
+import { Link } from 'react-router'
 
 const FlashSale = () => {
   return (
@@ -27,7 +28,9 @@ const FlashSale = () => {
         }
         </Flex>
         <div className='text-center'>
-        <Button>View All Products</Button>
+          <Link to="/products/flashSale">
+        <Button >View All Products</Button>
+          </Link>
 
         </div>
 <div className='xl:w-[1170px] w-full h-[1px] mx-auto absolute bottom-0 bg-black/30'></div>

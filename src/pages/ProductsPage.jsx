@@ -15,7 +15,7 @@ export default function Products() {
     if (category === "all") {
       filtered = products;
     } else {
-      filtered = products.filter((product) => product.category === category);
+      filtered = products.filter((product) => product.category === category || product.status === category);
     }
     setFilterProducts(filtered);
   }, [category]);

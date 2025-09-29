@@ -26,7 +26,10 @@ const OurProducts = () => {
           ))}
         </Flex>
         <div className="text-center">
+          
+          <Link to="/products/all">
           <Button>View All Products</Button>
+          </Link>
         </div>
       </Container>
     </div>

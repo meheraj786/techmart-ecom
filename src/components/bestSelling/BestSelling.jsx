@@ -6,6 +6,7 @@ import { products } from '../../utils/products'
 import { BiSolidStar, BiStar } from 'react-icons/bi'
 import ProductCard from '../productCard/ProductCard'
 import Button from '../../layouts/Button'
+import { Link } from 'react-router'
 
 const BestSelling = () => {
   return (
@@ -29,8 +30,9 @@ const BestSelling = () => {
         }
         </Flex>
         <div className='text-center'>
+          <Link to="/products/bestSelling">
         <Button>View All Products</Button>
-
+</Link>
         </div>
 
       </Container>
