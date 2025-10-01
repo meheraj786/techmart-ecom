@@ -1,7 +1,6 @@
 import React,{ useState, useEffect } from 'react';
 
 export default function CountdownTimer() {
-  // Set target date (you can change this to any future date)
   const targetDate = new Date();
   targetDate.setDate(targetDate.getDate() + 3);
   targetDate.setHours(23, 19, 56, 0);
@@ -50,7 +49,6 @@ export default function CountdownTimer() {
   return (
     <div className="flex items-center font-body justify-center p-8 bg-white">
       <div className="flex items-center space-x-6">
-        {/* Days */}
         <div className="text-center">
           <div className="text-xs text-gray-600 mb-1">Days</div>
           <div className="text-[32px] font-bold text-black">
@@ -58,13 +56,11 @@ export default function CountdownTimer() {
           </div>
         </div>
 
-        {/* Separator */}
         <div className="flex flex-col space-y-1">
           <div className="w-1 h-1 bg-[#E07575] rounded-full"></div>
           <div className="w-1 h-1 bg-[#E07575] rounded-full"></div>
         </div>
 
-        {/* Hours */}
         <div className="text-center">
           <div className="text-xs text-gray-600 mb-1">Hours</div>
           <div className="text-[32px] font-bold text-black">
@@ -72,13 +68,11 @@ export default function CountdownTimer() {
           </div>
         </div>
 
-        {/* Separator */}
         <div className="flex flex-col space-y-1">
           <div className="w-1 h-1 bg-[#E07575] rounded-full"></div>
           <div className="w-1 h-1 bg-[#E07575] rounded-full"></div>
         </div>
 
-        {/* Minutes */}
         <div className="text-center">
           <div className="text-xs text-gray-600 mb-1">Minutes</div>
           <div className="text-[32px] font-bold text-black">
@@ -86,13 +80,11 @@ export default function CountdownTimer() {
           </div>
         </div>
 
-        {/* Separator */}
         <div className="flex flex-col space-y-1">
           <div className="w-1 h-1 bg-[#E07575] rounded-full"></div>
           <div className="w-1 h-1 bg-[#E07575] rounded-full"></div>
         </div>
 
-        {/* Seconds */}
         <div className="text-center">
           <div className="text-xs text-gray-600 mb-1">Seconds</div>
           <div className="text-[32px] font-bold text-black">

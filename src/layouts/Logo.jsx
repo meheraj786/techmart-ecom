@@ -1,12 +1,16 @@
-import React from 'react'
-import { Link } from 'react-router'
+import React from "react";
+import { Link } from "react-router";
 
-const Logo = ({className}) => {
+const Logo = ({ className }) => {
   return (
     <Link to="/">
-    <div className={` font-logo text-[28px] text-black font-bold cursor-pointer ${className}`}>TECHMART</div>
+      <div
+        className={` font-logo text-[28px] text-black font-bold cursor-pointer ${className}`}
+      >
+        TECHMART
+      </div>
     </Link>
-  )
-}
+  );
+};
 
-export default Logo
+export default Logo;
