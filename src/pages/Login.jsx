@@ -4,6 +4,7 @@ import Container from '../layouts/Container';
 import sideImg from '../../public/SideImage.png'
 import { Link } from 'react-router';
 import Flex from '../layouts/Flex';
+import HelmetJs from '../layouts/HelmetJs';
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
@@ -29,7 +30,7 @@ export default function Login() {
 
   return (
     <div className="py-[120px] font-body">
-
+<HelmetJs title="Techmart - Login" desc="Great E-Commerce"/>
       <Container>
       <div className="w-full  bg-white  overflow-hidden">
         <div className="flex flex-col lg:flex-row">

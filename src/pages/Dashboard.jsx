@@ -13,6 +13,7 @@ import {
   Eye,
 } from "lucide-react";
 import Logo from "../layouts/Logo";
+import HelmetJs from "../layouts/HelmetJs";
 
 const initialProducts = [
   {
@@ -193,6 +194,7 @@ function Dashboard() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
+      <HelmetJs title="Techmart - Admin Dashboard" desc="Great E-Commerce"/>
       <div className="fixed left-0 top-0 h-full w-64 bg-white shadow-xl z-40 hidden lg:block">
         <div className="p-6">
           <div className="flex items-center space-x-3 mb-8">

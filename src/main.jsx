@@ -11,8 +11,8 @@ import Cart from "./pages/Cart.jsx";
 import CheckoutPage from "./pages/CheckoutPage.jsx";
 import Products from "./pages/ProductsPage.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
-
 const router = createBrowserRouter([
+  
   {
     path: "/",
     element: <RootLayout />,

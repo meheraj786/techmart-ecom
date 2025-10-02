@@ -3,6 +3,7 @@ import { Link } from 'react-router';
 
 import img1 from "../../public/1.png";
 import img2 from "../../public/2.png";
+import HelmetJs from '../layouts/HelmetJs';
 
 export default function CheckoutPage() {
   const [billingDetails, setBillingDetails] = useState({
@@ -42,11 +43,11 @@ export default function CheckoutPage() {
   ];
 
   const subtotal = 1750;
-  const shipping = 0;
   const total = 1750;
 
   return (
     <div className="min-h-screen font-body pb-[140px] pt-[60px] bg-gray-50">
+      <HelmetJs title="Techmart - Checkout" desc="Great E-Commerce"/>
       <div className="">
         <div className="max-w-7xl mx-auto px-4 py-4">
           <div className="flex items-center text-sm text-gray-600">

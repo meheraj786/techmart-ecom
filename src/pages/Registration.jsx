@@ -3,6 +3,7 @@ import { Eye, EyeOff } from 'lucide-react';
 import Container from '../layouts/Container';
 import sideImg from '../../public/SideImage.png'
 import { Link } from 'react-router';
+import HelmetJs from '../layouts/HelmetJs';
 
 export default function Registration() {
   const [showPassword, setShowPassword] = useState(false);
@@ -29,6 +30,7 @@ export default function Registration() {
 
   return (
     <div className="py-[120px] font-body">
+      <HelmetJs title="Techmart - Registration" desc="Great E-Commerce"/>
       <Container>
       <div className="w-full  bg-white  overflow-hidden">
         <div className="flex flex-col lg:flex-row">

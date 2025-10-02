@@ -3,6 +3,7 @@ import { ChevronLeft, Minus, Plus } from "lucide-react";
 import { Link } from "react-router";
 import img1 from "../../public/1.png";
 import img2 from "../../public/2.png";
+import HelmetJs from "../layouts/HelmetJs";
 
 export default function Cart() {
   const [cartItems, setCartItems] = useState([
@@ -46,6 +47,7 @@ export default function Cart() {
 
   return (
     <div className="min-h-screen pb-[140px] pt-[60px] bg-gray-50">
+      <HelmetJs title="Techmart - Cart" desc="Great E-Commerce"/>
       <div className="">
         <div className="max-w-6xl mx-auto px-4 py-4">
           <div className="flex items-center text-sm text-gray-600">

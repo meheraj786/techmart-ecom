@@ -4,6 +4,7 @@ import ProductCard from "../components/productCard/ProductCard";
 import { products } from "../utils/products";
 import Container from "../layouts/Container";
 import { Link, useParams } from "react-router";
+import HelmetJs from "../layouts/HelmetJs";
 
 export default function Products() {
   const [itemsPerPage, setItemsPerPage] = useState(6);
@@ -133,6 +134,7 @@ export default function Products() {
 
   return (
     <div className="min-h-screen bg-white">
+      <HelmetJs title="Techmart - Products" desc="Great E-Commerce"/>
       <Container>
         <div className="">
           <div className=" mx-auto px-4 py-4">

@@ -7,6 +7,7 @@ import { products } from "../utils/products";
 import Flex from "../layouts/Flex";
 import { useParams } from "react-router";
 import ProductCard from "../components/productCard/ProductCard";
+import HelmetJs from "../layouts/HelmetJs";
 
 const ProductDetailPage = () => {
   const {id}=useParams()
@@ -28,7 +29,7 @@ const ProductDetailPage = () => {
   return (
     <Container>
       <div className="p-6 pt-[130px] pb-[140px] font-body grid grid-cols-1 md:grid-cols-2 gap-10">
-        {/* Left Section - Images */}
+        <HelmetJs title={`Techmart - ${product.title}`} desc="Great E-Commerce"/>
         <div className="flex gap-4">
           <div className="flex flex-col gap-4 w-20">
             <img
@@ -46,12 +47,9 @@ const ProductDetailPage = () => {
         </div>
 
 
-        {/* Right Section - Details */}
         <div className="flex flex-col">
-          {/* Title */}
           <h3 className="">{product.title}</h3>
 
-          {/* Rating & Stock */}
           <Flex className="justify-start my-2 gap-x-1">
             {star.map(() => (
               <BiSolidStar size={24} color="#FFAD33" />
@@ -66,7 +64,6 @@ const ProductDetailPage = () => {
             }
           </Flex>
 
-          {/* Price */}
           <Flex className="justify-start gap-x-[12px]">
             {product.offerprice && product.offerprice > 0 && product.isStock ? (
               <>
@@ -84,10 +81,8 @@ const ProductDetailPage = () => {
             )}
           </Flex>
 
-          {/* Description */}
           <p className="!text-gray-600 !text-[14px] mt-3">{product.description}</p>
 
-          {/* Colors */}
           {product.colors && (
             <div className="mt-5">
               <h4 className="font-medium mb-2">Colours:</h4>
@@ -102,8 +97,6 @@ const ProductDetailPage = () => {
               </div>
             </div>
           )}
-
-          {/* Sizes */}
           <div className="mt-4">
             <h4 className="font-medium mb-2">Size:</h4>
             <div className="flex gap-3 flex-wrap">
@@ -124,7 +117,6 @@ const ProductDetailPage = () => {
             </div>
           </div>
 
-          {/* Quantity & Buttons */}
           <div className="flex items-center gap-4 mt-6 flex-wrap">
             <div className="flex items-center border rounded-md">
               <button className="px-3 py-2 hover:bg-primary hover:text-white cursor-pointer transition">
@@ -147,8 +139,6 @@ const ProductDetailPage = () => {
               <BiHeart size={24} />
             </button>
           </div>
-
-          {/* Delivery & Return Info */}
           <div className="mt-6 space-y-3 text-gray-600">
             <p className="flex items-center gap-2">
               <FaTruck className="text-gray-500" /> Free Delivery
