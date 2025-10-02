@@ -11,62 +11,77 @@ import {
   MoreVertical,
   TrendingUp,
   Eye,
+  Layers,
 } from "lucide-react";
 import Logo from "../layouts/Logo";
 import HelmetJs from "../layouts/HelmetJs";
+import { products as allproducts } from "../utils/products";
 
-const initialProducts = [
-  {
-    id: 1,
-    image: "1.png",
-    title: "HAVIT HV-G92 Gamepad",
-    description:
-      "High-quality gaming controller compatible with multiple platforms.",
-    offerprice: 280,
-    mainprice: 400,
-    category: "electronics",
-    status: "flashSale",
-    rating: 120,
-    stars: 2,
-    isStock: false,
-  },
-  {
-    id: 2,
-    image: "2.png",
-    title: "AK-900 Wired Keyboard",
-    description: "Mechanical keyboard with RGB lighting.",
-    offerprice: 960,
-    mainprice: 1160,
-    category: "electronics",
-    status: "flashSale",
-    rating: 80,
-    stars: 3,
-    isStock: true,
-  },
-  {
-    id: 3,
-    image: "3.png",
-    title: "IPS LCD Gaming Monitor",
-    description:
-      "24-inch Full HD monitor with high refresh rate and vibrant colors.",
-    offerprice: 370,
-    mainprice: 400,
-    category: "electronics",
-    status: "flashSale",
-    rating: 150,
-    stars: 4.7,
-    isStock: true,
-  },
-];
+// const initialProducts = [
+//   {
+//     id: 1,
+//     image: "1.png",
+//     title: "HAVIT HV-G92 Gamepad",
+//     description:
+//       "High-quality gaming controller compatible with multiple platforms.",
+//     offerprice: 280,
+//     mainprice: 400,
+//     category: "electronics",
+//     subcategory: "gaming",
+//     status: "flashSale",
+//     rating: 120,
+//     stars: 2,
+//     isStock: false,
+//   },
+//   {
+//     id: 2,
+//     image: "2.png",
+//     title: "AK-900 Wired Keyboard",
+//     description: "Mechanical keyboard with RGB lighting.",
+//     offerprice: 960,
+//     mainprice: 1160,
+//     category: "electronics",
+//     subcategory: "computers",
+//     status: "flashSale",
+//     rating: 80,
+//     stars: 3,
+//     isStock: true,
+//   },
+//   {
+//     id: 3,
+//     image: "3.png",
+//     title: "IPS LCD Gaming Monitor",
+//     description:
+//       "24-inch Full HD monitor with high refresh rate and vibrant colors.",
+//     offerprice: 370,
+//     mainprice: 400,
+//     category: "electronics",
+//     subcategory: "monitors",
+//     status: "flashSale",
+//     rating: 150,
+//     stars: 4.7,
+//     isStock: true,
+//   },
+// ];
 
 const initialCategories = [
-  "electronics",
-  "furniture",
-  "fashion",
-  "pets",
-  "cosmetics",
-  "toys",
-  "sports",
+  { id: 1, name: "electronics" },
+  { id: 2, name: "furniture" },
+  { id: 3, name: "fashion" },
+  { id: 4, name: "pets" },
+  { id: 5, name: "cosmetics" },
+  { id: 6, name: "toys" },
+  { id: 7, name: "sports" },
+];
+
+const initialSubcategories = [
+  { id: 1, name: "gaming", categoryId: 1 },
+  { id: 2, name: "computers", categoryId: 1 },
+  { id: 3, name: "mobile", categoryId: 1 },
+  { id: 4, name: "monitors", categoryId: 1 },
+  { id: 5, name: "chairs", categoryId: 2 },
+  { id: 6, name: "tables", categoryId: 2 },
+  { id: 7, name: "sofas", categoryId: 2 },
 ];
 
 const initialOrders = [
@@ -101,14 +116,21 @@ const initialOrders = [
 
 function Dashboard() {
   const [activeTab, setActiveTab] = useState("products");
-  const [products, setProducts] = useState(initialProducts);
+  const [products, setProducts] = useState(allproducts);
   const [categories, setCategories] = useState(initialCategories);
+  const [subcategories, setSubcategories] = useState(initialSubcategories);
   const [orders, setOrders] = useState(initialOrders);
   const [showModal, setShowModal] = useState(false);
   const [modalType, setModalType] = useState("");
   const [editingItem, setEditingItem] = useState(null);
   const [formData, setFormData] = useState({});
   const [searchTerm, setSearchTerm] = useState("");
+  const [showCategoryModal, setShowCategoryModal] = useState(false);
+  const [newCategoryName, setNewCategoryName] = useState("");
+
+
+  
+
 
   const handleAddProduct = () => {
     setModalType("product");
@@ -118,7 +140,8 @@ function Dashboard() {
       description: "",
       offerprice: "",
       mainprice: "",
-      category: categories[0],
+      category: categories[0]?.name || "",
+      subcategory: subcategories.filter(s => s.categoryId === categories[0]?.id)[0]?.name || "",
       status: "normal",
       rating: 0,
       stars: 0,
@@ -154,16 +177,79 @@ function Dashboard() {
   };
 
   const handleAddCategory = () => {
-    const newCategory = prompt("Notun category name:");
-    if (newCategory && !categories.includes(newCategory.toLowerCase())) {
-      setCategories([...categories, newCategory.toLowerCase()]);
+    setShowCategoryModal(true);
+    setNewCategoryName("");
+  };
+
+  const handleSaveCategory = () => {
+    if (newCategoryName && !categories.find(c => c.name.toLowerCase() === newCategoryName.toLowerCase())) {
+      const newCategory = {
+        id: Date.now(),
+        name: newCategoryName.toLowerCase()
+      };
+      setCategories([...categories, newCategory]);
+      setShowCategoryModal(false);
+      setNewCategoryName("");
     }
   };
 
   const handleDeleteCategory = (cat) => {
-    if (confirm(`"${cat}" category delete korte chan?`)) {
-      setCategories(categories.filter((c) => c !== cat));
+    if (confirm(`"${cat.name}" category delete korte chan?`)) {
+      setCategories(categories.filter((c) => c.id !== cat.id));
+      setSubcategories(subcategories.filter((s) => s.categoryId !== cat.id));
+      setProducts(products.map(p => 
+        p.category === cat.name ? { ...p, category: "", subcategory: "" } : p
+      ));
     }
+  };
+
+  const handleAddSubcategory = () => {
+    setModalType("subcategory");
+    setEditingItem(null);
+    setFormData({
+      name: "",
+      categoryId: categories[0]?.id || ""
+    });
+    setShowModal(true);
+  };
+
+  const handleEditSubcategory = (subcat) => {
+    setModalType("subcategory");
+    setEditingItem(subcat);
+    setFormData(subcat);
+    setShowModal(true);
+  };
+
+  const handleDeleteSubcategory = (id) => {
+    if (confirm("Subcategory delete korte chan?")) {
+      setSubcategories(subcategories.filter((s) => s.id !== id));
+      setProducts(products.map(p => 
+        p.subcategory === subcategories.find(s => s.id === id)?.name ? { ...p, subcategory: "" } : p
+      ));
+    }
+  };
+
+  const handleSaveSubcategory = () => {
+    if (editingItem) {
+      setSubcategories(
+        subcategories.map((s) =>
+          s.id === editingItem.id ? { ...formData, id: editingItem.id } : s
+        )
+      );
+    } else {
+      setSubcategories([...subcategories, { ...formData, id: Date.now() }]);
+    }
+    setShowModal(false);
+  };
+
+  // const getCategoryName = (categoryId) => {
+  //   return categories.find(c => c.id === categoryId)?.name || "Unknown";
+  // };
+
+  const getSubcategoriesByCategory = (categoryName) => {
+    const category = categories.find(c => c.name === categoryName);
+    if (!category) return [];
+    return subcategories.filter(s => s.categoryId === category.id);
   };
 
   const handleUpdateOrderStatus = (id, newStatus) => {
@@ -228,6 +314,17 @@ function Dashboard() {
               <span className="font-medium">Categories</span>
             </button>
             <button
+              onClick={() => setActiveTab("subcategories")}
+              className={`w-full flex items-center space-x-3 px-4 py-3 rounded-xl transition-all ${
+                activeTab === "subcategories"
+                  ? "bg-primary text-white shadow-lg shadow-red-200"
+                  : "text-gray-600 hover:bg-gray-100"
+              }`}
+            >
+              <Layers className="h-5 w-5" />
+              <span className="font-medium">Subcategories</span>
+            </button>
+            <button
               onClick={() => setActiveTab("orders")}
               className={`w-full flex items-center space-x-3 px-4 py-3 rounded-xl transition-all ${
                 activeTab === "orders"
@@ -263,6 +360,8 @@ function Dashboard() {
                     ? "Products Management"
                     : activeTab === "categories"
                     ? "Categories"
+                    : activeTab === "subcategories"
+                    ? "Subcategories"
                     : "Orders Management"}
                 </h5>
                 <p className="text-sm text-gray-500 mt-1">
@@ -270,6 +369,8 @@ function Dashboard() {
                     ? "Manage your product inventory"
                     : activeTab === "categories"
                     ? "Organize product categories"
+                    : activeTab === "subcategories"
+                    ? "Manage subcategories under categories"
                     : "Track and manage orders"}
                 </p>
               </div>
@@ -305,6 +406,16 @@ function Dashboard() {
                   Add Category
                 </button>
               )}
+
+              {activeTab === "subcategories" && (
+                <button
+                  onClick={handleAddSubcategory}
+                  className="bg-primary text-white px-6 py-2 rounded-xl hover:shadow-lg hover:shadow-red-200 transition-all flex items-center gap-2 font-medium"
+                >
+                  <Plus className="h-5 w-5" />
+                  Add Subcategory
+                </button>
+              )}
             </div>
           </div>
         </div>
@@ -320,7 +431,7 @@ function Dashboard() {
                   <div className="p-6">
                     <div className="flex flex-col sm:flex-row gap-6">
                       <div className="w-full sm:w-32 h-32 bg-gradient-to-br from-gray-100 to-gray-200 rounded-xl flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
-                        <Package className="h-12 w-12 text-gray-400" />
+                        <img src={product.image} alt="" />
                       </div>
 
                       <div className="flex-1 space-y-3">
@@ -353,6 +464,11 @@ function Dashboard() {
                           <span className="px-3 py-1 bg-gradient-to-r from-blue-100 to-indigo-100 text-blue-700 rounded-full text-xs font-semibold capitalize">
                             {product.category}
                           </span>
+                          {product.subcategory && (
+                            <span className="px-3 py-1 bg-gradient-to-r from-purple-100 to-pink-100 text-purple-700 rounded-full text-xs font-semibold capitalize">
+                              {product.subcategory}
+                            </span>
+                          )}
                           <span
                             className={`px-3 py-1 ${
                               product.isStock
@@ -407,7 +523,7 @@ function Dashboard() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
               {categories.map((cat, index) => (
                 <div
-                  key={cat}
+                  key={cat.id}
                   className="bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all border border-gray-100 overflow-hidden group"
                 >
                   <div
@@ -460,12 +576,12 @@ function Dashboard() {
                       </button>
                     </div>
                     <h5 className="text-xl font-bold text-gray-900 capitalize mb-2">
-                      {cat}
+                      {cat.name}
                     </h5>
                     <div className="flex items-center justify-between">
                       <p className="text-sm text-gray-500">
-                        {products.filter((p) => p.category === cat).length}{" "}
-                        products
+                        {products.filter((p) => p.category === cat.name).length}{" "}
+                        products • {subcategories.filter(s => s.categoryId === cat.id).length} subcategories
                       </p>
                       <button className="text-xs font-semibold text-gray-400 hover:text-gray-600 flex items-center gap-1">
                         <Eye className="h-3 w-3" />
@@ -475,6 +591,103 @@ function Dashboard() {
                   </div>
                 </div>
               ))}
+            </div>
+          )}
+
+          {activeTab === "subcategories" && (
+            <div className="space-y-6">
+              {categories.map(category => {
+                const categorySubcategories = subcategories.filter(s => s.categoryId === category.id);
+                if (categorySubcategories.length === 0) return null;
+                
+                return (
+                  <div key={category.id} className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+                    <div className="bg-gradient-to-r from-gray-50 to-gray-100 p-4 border-b">
+                      <h4 className="text-lg font-bold text-gray-900 capitalize">{category.name}</h4>
+                      <p className="text-sm text-gray-500">{categorySubcategories.length} subcategories</p>
+                    </div>
+                    <div className="p-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                      {categorySubcategories.map((subcat, index) => (
+                        <div
+                          key={subcat.id}
+                          className="bg-gray-50 rounded-xl p-4 hover:bg-gray-100 transition-all group"
+                        >
+                          <div className="flex items-center justify-between">
+                            <div className="flex items-center gap-3">
+                              <div
+                                className={`w-10 h-10 rounded-lg bg-gradient-to-br ${
+                                  index % 5 === 0
+                                    ? "from-red-100 to-pink-100"
+                                    : index % 5 === 1
+                                    ? "from-blue-100 to-cyan-100"
+                                    : index % 5 === 2
+                                    ? "from-green-100 to-emerald-100"
+                                    : index % 5 === 3
+                                    ? "from-purple-100 to-violet-100"
+                                    : "from-orange-100 to-yellow-100"
+                                } flex items-center justify-center`}
+                              >
+                                <Layers
+                                  className={`h-5 w-5 ${
+                                    index % 5 === 0
+                                      ? "text-red-600"
+                                      : index % 5 === 1
+                                      ? "text-blue-600"
+                                      : index % 5 === 2
+                                      ? "text-green-600"
+                                      : index % 5 === 3
+                                      ? "text-purple-600"
+                                      : "text-orange-600"
+                                  }`}
+                                />
+                              </div>
+                              <div>
+                                <h5 className="font-semibold text-gray-900 capitalize">
+                                  {subcat.name}
+                                </h5>
+                                <p className="text-xs text-gray-500 capitalize">
+                                  {category.name}
+                                </p>
+                              </div>
+                            </div>
+                            <div className="flex items-center gap-1">
+                              <button
+                                onClick={() => handleEditSubcategory(subcat)}
+                                className="p-1 hover:bg-blue-50 rounded text-blue-600 transition-colors"
+                              >
+                                <Edit2 className="h-4 w-4" />
+                              </button>
+                              <button
+                                onClick={() => handleDeleteSubcategory(subcat.id)}
+                                className="p-1 hover:bg-red-50 rounded text-red-600 transition-colors"
+                              >
+                                <Trash2 className="h-4 w-4" />
+                              </button>
+                            </div>
+                          </div>
+                          <div className="mt-3 text-xs text-gray-500">
+                            {products.filter(p => p.subcategory === subcat.name).length} products
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                );
+              })}
+              
+              {subcategories.length === 0 && (
+                <div className="text-center py-12">
+                  <Layers className="h-16 w-16 text-gray-300 mx-auto mb-4" />
+                  <h4 className="text-lg font-semibold text-gray-900 mb-2">No Subcategories</h4>
+                  <p className="text-gray-500 mb-4">Get started by creating your first subcategory</p>
+                  <button
+                    onClick={handleAddSubcategory}
+                    className="bg-primary text-white px-6 py-2 rounded-xl hover:shadow-lg hover:shadow-red-200 transition-all"
+                  >
+                    Add Subcategory
+                  </button>
+                </div>
+              )}
             </div>
           )}
 
@@ -666,12 +879,34 @@ function Dashboard() {
                     className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all capitalize"
                   >
                     {categories.map((cat) => (
-                      <option key={cat} value={cat} className="capitalize">
-                        {cat}
+                      <option key={cat.id} value={cat.name} className="capitalize">
+                        {cat.name}
                       </option>
                     ))}
                   </select>
                 </div>
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    Subcategory
+                  </label>
+                  <select
+                    value={formData.subcategory}
+                    onChange={(e) =>
+                      setFormData({ ...formData, subcategory: e.target.value })
+                    }
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all capitalize"
+                  >
+                    <option value="">Select Subcategory</option>
+                    {getSubcategoriesByCategory(formData.category).map((subcat) => (
+                      <option key={subcat.id} value={subcat.name} className="capitalize">
+                        {subcat.name}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-semibold text-gray-700 mb-2">
                     Status
@@ -726,6 +961,125 @@ function Dashboard() {
         </div>
       )}
 
+      {showModal && modalType === "subcategory" && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+          <div className="bg-white rounded-3xl max-w-md w-full shadow-2xl">
+            <div className="sticky top-0 bg-primary p-6 text-white rounded-t-3xl">
+              <div className="flex justify-between items-center">
+                <h5 className="text-2xl font-bold">
+                  {editingItem ? "Edit Subcategory" : "Add New Subcategory"}
+                </h5>
+                <button
+                  onClick={() => setShowModal(false)}
+                  className="p-2 hover:bg-white/20 rounded-xl transition-colors"
+                >
+                  <X className="h-6 w-6" />
+                </button>
+              </div>
+            </div>
+
+            <div className="p-6 space-y-6">
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  Subcategory Name
+                </label>
+                <input
+                  type="text"
+                  value={formData.name}
+                  onChange={(e) =>
+                    setFormData({ ...formData, name: e.target.value })
+                  }
+                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all"
+                  placeholder="Enter subcategory name..."
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  Category
+                </label>
+                <select
+                  value={formData.categoryId}
+                  onChange={(e) =>
+                    setFormData({ ...formData, categoryId: Number(e.target.value) })
+                  }
+                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all capitalize"
+                >
+                  {categories.map((cat) => (
+                    <option key={cat.id} value={cat.id} className="capitalize">
+                      {cat.name}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div className="flex justify-end space-x-3 pt-4 border-t">
+                <button
+                  onClick={() => setShowModal(false)}
+                  className="px-6 py-3 border-2 border-gray-300 rounded-xl text-gray-700 hover:bg-gray-50 font-semibold transition-all"
+                >
+                  Cancel
+                </button>
+                <button
+                  onClick={handleSaveSubcategory}
+                  className="px-6 py-3 bg-primary text-white rounded-xl hover:shadow-lg hover:shadow-red-200 font-semibold transition-all"
+                >
+                  {editingItem ? "Update Subcategory" : "Add Subcategory"}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {showCategoryModal && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+          <div className="bg-white rounded-3xl max-w-md w-full shadow-2xl">
+            <div className="sticky top-0 bg-primary p-6 text-white rounded-t-3xl">
+              <div className="flex justify-between items-center">
+                <h5 className="text-2xl font-bold">Add New Category</h5>
+                <button
+                  onClick={() => setShowCategoryModal(false)}
+                  className="p-2 hover:bg-white/20 rounded-xl transition-colors"
+                >
+                  <X className="h-6 w-6" />
+                </button>
+              </div>
+            </div>
+
+            <div className="p-6 space-y-6">
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  Category Name
+                </label>
+                <input
+                  type="text"
+                  value={newCategoryName}
+                  onChange={(e) => setNewCategoryName(e.target.value)}
+                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all"
+                  placeholder="Enter category name..."
+                />
+              </div>
+
+              <div className="flex justify-end space-x-3 pt-4 border-t">
+                <button
+                  onClick={() => setShowCategoryModal(false)}
+                  className="px-6 py-3 border-2 border-gray-300 rounded-xl text-gray-700 hover:bg-gray-50 font-semibold transition-all"
+                >
+                  Cancel
+                </button>
+                <button
+                  onClick={handleSaveCategory}
+                  className="px-6 py-3 bg-primary text-white rounded-xl hover:shadow-lg hover:shadow-red-200 font-semibold transition-all"
+                >
+                  Add Category
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
       <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-white border-t shadow-lg z-40">
         <div className="flex justify-around items-center py-3">
           <button
@@ -745,6 +1099,15 @@ function Dashboard() {
           >
             <Tag className="h-6 w-6" />
             <span className="text-xs font-medium">Categories</span>
+          </button>
+          <button
+            onClick={() => setActiveTab("subcategories")}
+            className={`flex flex-col items-center gap-1 px-4 py-2 rounded-xl transition-all ${
+              activeTab === "subcategories" ? "text-red-600" : "text-gray-500"
+            }`}
+          >
+            <Layers className="h-6 w-6" />
+            <span className="text-xs font-medium">Subcategories</span>
           </button>
           <button
             onClick={() => setActiveTab("orders")}
