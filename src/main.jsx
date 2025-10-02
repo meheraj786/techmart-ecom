@@ -9,7 +9,7 @@ import Registration from "./pages/Registration.jsx";
 import Login from "./pages/Login.jsx";
 import Cart from "./pages/Cart.jsx";
 import CheckoutPage from "./pages/CheckoutPage.jsx";
-import Products from "./pages/productsPage.jsx";
+import Products from "./pages/ProductsPage.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
 
 const router = createBrowserRouter([
