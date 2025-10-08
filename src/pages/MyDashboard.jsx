@@ -49,7 +49,6 @@ export default function MyDashboard() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
       <header className="bg-white border-b border-gray-200 px-4 py-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-4">
@@ -66,13 +65,11 @@ export default function MyDashboard() {
 
       <div className="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row gap-8">
-          {/* Sidebar */}
           <aside className="w-full lg:w-64 flex-shrink-0">
             <div className="bg-white rounded-lg shadow-sm p-6">
               <h4 className="text-lg font-semibold text-gray-900 mb-6">Manage Dashboard</h4>
               
               <nav className="space-y-6">
-                {/* Products Section */}
                 <div>
                   <button
                     className={`flex items-center space-x-2 w-full text-left ${
@@ -101,8 +98,6 @@ export default function MyDashboard() {
                     </li>
                   </ul>
                 </div>
-
-                {/* Sales Section */}
                 <div>
                   <button
                     className={`flex items-center space-x-2 w-full text-left ${
@@ -131,8 +126,6 @@ export default function MyDashboard() {
                     </li>
                   </ul>
                 </div>
-
-                {/* Categories Section */}
                 <div>
                   <button
                     className={`flex items-center space-x-2 w-full text-left ${
@@ -162,7 +155,6 @@ export default function MyDashboard() {
                   </ul>
                 </div>
 
-                {/* Subcategories Section */}
                 <div>
                   <button
                     className={`flex items-center space-x-2 w-full text-left ${
@@ -195,10 +187,8 @@ export default function MyDashboard() {
             </div>
           </aside>
 
-          {/* Main Content */}
           <main className="flex-1">
             <div className="bg-white rounded-lg shadow-sm p-6 sm:p-8">
-              {/* Add Product Form */}
               {activeSection === 'add-product' && (
                 <div>
                   <h4 className="text-xl font-semibold text-gray-900 mb-6">Add New Product</h4>
@@ -262,7 +252,6 @@ export default function MyDashboard() {
                 </div>
               )}
 
-              {/* Add Sale Form */}
               {activeSection === 'add-sale' && (
                 <div>
                   <h4 className="text-xl font-semibold text-gray-900 mb-6">Add New Sale</h4>
@@ -302,8 +291,6 @@ export default function MyDashboard() {
                   </div>
                 </div>
               )}
-
-              {/* Add Category Form */}
               {activeSection === 'add-category' && (
                 <div>
                   <h4 className="text-xl font-semibold text-gray-900 mb-6">Add New Category</h4>
@@ -334,7 +321,6 @@ export default function MyDashboard() {
                 </div>
               )}
 
-              {/* Add Subcategory Form */}
               {activeSection === 'add-subcategory' && (
                 <div>
                   <h4 className="text-xl font-semibold text-gray-900 mb-6">Add New Subcategory</h4>
@@ -365,7 +351,6 @@ export default function MyDashboard() {
                 </div>
               )}
 
-              {/* View sections */}
               {activeSection === 'view-products' && (
                 <div>
                   <h4 className="text-xl font-semibold text-gray-900 mb-6">All Products</h4>
@@ -394,7 +379,6 @@ export default function MyDashboard() {
                 </div>
               )}
 
-              {/* Action Buttons */}
               {activeSection.includes('add') && (
                 <div className="flex justify-end gap-4 mt-8">
                   <button
