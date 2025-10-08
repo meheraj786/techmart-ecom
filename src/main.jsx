@@ -67,12 +67,12 @@ const router = createBrowserRouter([
         path: "/my-account",
         element: <MyAccount />,
       },
-      {
-        path: "/dashboard",
-        element: <MyDashboard />,
-        // element: <Dashboard />,
-      },
     ],
+  },
+  {
+    path: "/dashboard",
+    element: <MyDashboard />,
+    // element: <Dashboard />,
   },
 ]);
 
