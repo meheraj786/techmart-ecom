@@ -6,7 +6,7 @@ const Footer = () => {
 return (
   <div className='bg-black pt-[80px] pb-[60px] text-white py-30 font-body'>
     <Container>
-      <div className="grid grid-cols-5 gap-8">
+      <div className="xl:grid grid-cols-5 gap-8">
         <div className=''>
           <Logo className="text-white"/>
           <h4 className='text-[20px] font-medium mt-6'>Subscribe</h4>

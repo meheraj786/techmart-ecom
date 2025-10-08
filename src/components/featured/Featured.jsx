@@ -8,7 +8,7 @@ import img4 from "../../../public/arrivalImg4.png";
 
 const Featured = () => {
   return (
-    <div className="font-body pb-[140px]">
+    <div className="font-body xl:pb-[140px] pb-[300px]">
       <Container>
         <div className="text-primary mb-5 flex items-center justify-start ">
           <div className="w-5 h-10 rounded-sm bg-primary mr-4"></div>
@@ -17,7 +17,7 @@ const Featured = () => {
         <Flex className="mb-[60px]">
           <h3>New Arrival</h3>
         </Flex>
-        <div className="grid grid-cols-2 gap-x-[30px]">
+        <div className="xl:grid grid-cols-2 gap-x-[30px]">
           <div className="bg-black group relative h-[600px]">
             <div className="absolute bottom-8 z-10 left-8">
               <h4 className="text-2xl text-white font-bold mb-3">
@@ -37,7 +37,7 @@ const Featured = () => {
             />
           </div>
           <div className=" h-[600px]">
-            <div className="grid grid-rows-2 gap-y-[30px]">
+            <div className="xl:grid grid-rows-2 gap-y-[30px]">
               <div className="bg-black group relative h-[285px]">
                 <div className="absolute bottom-8 z-10 left-8">
                   <h4 className="text-2xl text-white font-bold mb-3">
@@ -57,7 +57,7 @@ const Featured = () => {
                 />
               </div>
               <div className=" h-[285px]">
-                <div className="grid grid-cols-2 gap-x-[30px]">
+                <div className="xl:grid grid-cols-2 gap-x-[30px]">
                   <div className="bg-black group relative h-[285px]">
                     <div className="absolute z-10 bottom-8 left-8">
                       <h4 className="text-2xl text-white font-bold mb-3">
