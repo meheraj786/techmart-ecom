@@ -11,8 +11,8 @@
 }
 
 h2{
-  @apply text-5xl font-semibold leading-12 tracking-[4%] font-heading text-black;
+  @apply text-4xl xl:text-5xl font-semibold leading-12 tracking-[4%] font-heading text-black;
 }
 h3{
-  @apply text-4xl font-semibold leading-12 tracking-[4%] font-heading text-black;
+  @apply text-3xl xl:text-4xl font-semibold leading-12 tracking-[4%] font-heading text-black;
 }

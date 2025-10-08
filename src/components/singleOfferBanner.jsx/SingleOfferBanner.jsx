@@ -33,8 +33,8 @@ export default function SingleOfferBanner() {
     <div className=" font-body  text-white relative overflow-hidden">
       <Container>
       <div className="bg-black group">
-      <div className="container mx-auto px-[56px] py-12">
-        <div className="flex items-center justify-between">
+      <div className="container mx-auto p-10 xl:px-[56px] xl:py-12">
+        <div className="flex xl:flex-row flex-col items-center justify-between">
           <div className="flex-1 max-w-lg">
 
             <div className="inline-block mb-6">

@@ -36,7 +36,6 @@ const Banner = () => {
     <div className="font-body overflow-x-hidden pt-10 pb-[140px]">
       <Container>
         <Flex className="items-start gap-x-[32px]">
-          {/* Sidebar */}
           <aside className="xl:w-[233px] relative hidden after:absolute after:content-[''] after:w-[1px] after:h-[384px] after:bg-black/30 after:-top-10 after:right-0 xl:block">
             <ul className="space-y-4">
               {categories.map((category, index) => (
@@ -53,23 +52,20 @@ const Banner = () => {
           </aside>
 
         <div className="flex-1 overflow-hidden text-white">
-           {/* Slider */}
           <div
             className=" text-white group relative"
             onMouseEnter={() => setPaused(true)}
             onMouseLeave={() => setPaused(false)}
           >
-            {/* Slides wrapper */}
             <div
-              className="flex transition-transform duration-700 ease-in-out h-[344px]"
+              className="flex transition-transform duration-700 ease-in-out xl:h-[344px]"
               style={{ transform: `translateX(-${current * 100}%)` }}
             >
               {slides.map((product) => (
                 <div
                   key={product.id}
-                  className="flex justify-between items-center min-w-full bg-black"
+                  className="flex justify-between flex-col xl:flex-row items-center min-w-full bg-black"
                 >
-                  {/* Left side text */}
                   <div className="pl-[54px] w-[320px] pt-[64px] pb-[47px]">
                     <p className="!text-white font-bold">
                       {product.title}
@@ -85,8 +81,7 @@ const Banner = () => {
                     </button>
                   </div>
 
-                  {/* Right side image */}
-                  <div className="pr-[100px] relative">
+                  <div className="xl:pr-[100px] mx-auto relative">
                     <img
                       src={product.image}
                       alt={product.title}
@@ -97,7 +92,6 @@ const Banner = () => {
               ))}
             </div>
 
-            {/* Dots */}
             <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
               {slides.map((_, i) => (
                 <button
