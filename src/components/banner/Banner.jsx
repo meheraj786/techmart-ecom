@@ -4,6 +4,7 @@ import Flex from "../../layouts/Flex";
 import { BiArrowToRight } from "react-icons/bi";
 import { products } from "../../utils/products";
 import { Link } from "react-router";
+import { ArrowRight } from "lucide-react";
 
 const Banner = () => {
   const categories = [
@@ -66,22 +67,22 @@ const Banner = () => {
                   key={product.id}
                   className="flex justify-between flex-col xl:flex-row items-center min-w-full bg-black"
                 >
-                  <div className="pl-[54px] w-[320px] pt-[64px] pb-[47px]">
+                  <div className="xl:pl-[54px] pl-5 w-[320px] pt-[64px] pb-[47px]">
                     <p className="!text-white font-bold">
                       {product.title}
                     </p>
                     <h2 className="!text-white py-3 ">
     Save upto {Math.round(((product.mainprice - product.offerprice) / product.mainprice) * 100)}%
                     </h2>
-                    <button className="font-medium flex items-center gap-x-2 mt-3">
+                    <button className="font-medium group flex items-center gap-x-2 mt-3">
                       <Link to={`/product/${product.id}`}>
                       <span className="border-b border-white">Shop Now </span>
                       </Link>
-                      <BiArrowToRight size={24} />
+                      <ArrowRight className="group-hover:translate-x-3 transition-all duration-300" size={24} />
                     </button>
                   </div>
 
-                  <div className="xl:pr-[100px] mx-auto relative">
+                  <div className="xl:pr-[100px] mx-auto xl:mx-0 relative">
                     <img
                       src={product.image}
                       alt={product.title}

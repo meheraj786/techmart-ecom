@@ -115,8 +115,8 @@ export default function Cart() {
           </div>
         </div>
 
-        <div className="mt-8 flex items-start justify-between gap-x-[170px]">
-          <div className="flex space-x-4 w-1/2">
+        <div className="mt-8 flex flex-col xl:flex-row items-start justify-between gap-x-[170px]">
+          <div className="flex space-x-4 xl:w-1/2 mb-5 w-full">
             <input
               type="text"
               placeholder="Coupon Code"
@@ -129,7 +129,7 @@ export default function Cart() {
             </button>
           </div>
 
-          <div className="bg-white w-1/2 border border-gray-200 rounded-lg p-6">
+          <div className="bg-white xl:w-1/2 w-full border border-gray-200 rounded-lg p-6">
             <h3 className="text-lg font-semibold mb-4">Cart Total</h3>
 
             <div className="space-y-3">

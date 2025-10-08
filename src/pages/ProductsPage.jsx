@@ -56,7 +56,7 @@ export default function Products() {
 
         <div className="max-w-7xl mx-auto px-4 py-8">
           <div className="flex gap-8">
-            <div className="w-64 flex-shrink-0">
+            <div className="w-64 hidden xl:block flex-shrink-0">
               <div className="mb-8">
                 <h3 className="text-lg font-semibold mb-4">Shop by Category</h3>
                 <div className="space-y-2">
