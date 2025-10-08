@@ -14,6 +14,8 @@ import Dashboard from "./pages/Dashboard.jsx";
 import WishList from "./pages/WishList.jsx";
 import AboutPage from "./pages/About.jsx";
 import ContactPage from "./pages/Contact.jsx";
+import MyAccount from "./pages/MyAccountPage.jsx";
+import MyDashboard from "./pages/MyDashboard.jsx";
 const router = createBrowserRouter([
   
   {
@@ -61,10 +63,15 @@ const router = createBrowserRouter([
         path: "/contact",
         element: <ContactPage />,
       },
+      {
+        path: "/my-account",
+        element: <MyAccount />,
+      },
     ],
   },
   {
     path: "/dashboard",
+    // element: <MyDashboard />,
     element: <Dashboard />,
   },
 ]);
