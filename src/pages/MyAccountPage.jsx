@@ -17,10 +17,10 @@ import ProductCard from "../components/productCard/ProductCard";
 export default function MyAccount() {
   const [activePage, setActivePage] = useState("profile");
   const [formData, setFormData] = useState({
-    firstName: "Md",
-    lastName: "Rimel",
-    email: "rimel111@gmail.com",
-    address: "Kingston, 5236, United State",
+    firstName: "Meheraj",
+    lastName: "Hosen",
+    email: "meheraj@gmail.com",
+    address: "Moahmmadpur",
     currentPassword: "",
     newPassword: "",
     confirmPassword: "",
@@ -50,7 +50,6 @@ export default function MyAccount() {
     });
   };
 
-  // Profile Page Component
   const ProfilePage = () => (
     <div className="bg-white rounded-lg shadow-sm p-4 sm:p-6 lg:p-8">
       <h4 className="text-lg sm:text-xl font-semibold text-primary mb-4 sm:mb-6">
@@ -164,8 +163,6 @@ export default function MyAccount() {
       </div>
     </div>
   );
-
-  // Address Book Page
   const AddressBookPage = () => (
     <div className="bg-white rounded-lg shadow-sm p-4 sm:p-6 lg:p-8">
       <h4 className="text-lg sm:text-xl font-semibold text-primary mb-4 sm:mb-6">
@@ -215,7 +212,6 @@ export default function MyAccount() {
     </div>
   );
 
-  // Payment Options Page
   const PaymentOptionsPage = () => (
     <div className="bg-white rounded-lg shadow-sm p-4 sm:p-6 lg:p-8">
       <h4 className="text-lg sm:text-xl font-semibold text-primary mb-4 sm:mb-6">
@@ -278,7 +274,6 @@ export default function MyAccount() {
     </div>
   );
 
-  // My Returns Page
   const MyReturnsPage = () => (
     <div className="bg-white rounded-lg shadow-sm p-4 sm:p-6 lg:p-8">
       <h4 className="text-lg sm:text-xl font-semibold text-primary mb-4 sm:mb-6">
@@ -338,8 +333,6 @@ export default function MyAccount() {
       </div>
     </div>
   );
-
-  // My Cancellations Page
   const MyCancellationsPage = () => (
     <div className="bg-white rounded-lg shadow-sm p-4 sm:p-6 lg:p-8">
       <h4 className="text-lg sm:text-xl font-semibold text-primary mb-4 sm:mb-6">
@@ -380,7 +373,6 @@ export default function MyAccount() {
     </div>
   );
 
-  // My Wishlist Page
   const MyWishlistPage = () => (
     <div className="bg-white rounded-lg shadow-sm p-4 sm:p-6 lg:p-8">
       <h4 className="text-lg sm:text-xl font-semibold text-primary mb-4 sm:mb-6">
