@@ -5,8 +5,12 @@ import { products } from "../utils/products";
 import Container from "../layouts/Container";
 import { Link, useParams } from "react-router";
 import HelmetJs from "../layouts/HelmetJs";
+import { useProducts } from "../hooks/useProducts";
 
 export default function Products() {
+  const {data,isLoading,isError}=useProducts()
+  console.log(data);
+  
   const [itemsPerPage, setItemsPerPage] = useState(6);
   const [filterProducts, setFilterProducts] = useState([]);
   const { category } = useParams();
@@ -102,6 +106,9 @@ export default function Products() {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {data?.slice(0, itemsPerPage).map((product) => (
+                  <ProductCard product={product} />
+                ))}
                 {filterProducts.slice(0, itemsPerPage).map((product) => (
                   <ProductCard product={product} />
                 ))}
