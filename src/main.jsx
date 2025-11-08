@@ -16,8 +16,9 @@ import AboutPage from "./pages/About.jsx";
 import ContactPage from "./pages/Contact.jsx";
 import MyAccount from "./pages/MyAccountPage.jsx";
 import MyDashboard from "./pages/MyDashboard.jsx";
+import { QueryClientProvider } from "@tanstack/react-query";
+import { queryClient } from "./client/queryClient.js";
 const router = createBrowserRouter([
-  
   {
     path: "/",
     element: <RootLayout />,
@@ -77,7 +78,7 @@ const router = createBrowserRouter([
 ]);
 
 createRoot(document.getElementById("root")).render(
-  <StrictMode>
+  <QueryClientProvider client={queryClient}>
     <RouterProvider router={router} />,
-  </StrictMode>
+  </QueryClientProvider>
 );
