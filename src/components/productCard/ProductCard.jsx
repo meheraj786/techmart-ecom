@@ -97,19 +97,19 @@ const ProductCard = ({ product }) => {
         </p>
       </Link>
       <Flex className="justify-start gap-x-[12px]">
-        {product.offerprice && product.offerprice > 0 && product.isStock ? (
+        {product.discount && product.price > 0 && product.isStock ? (
           <>
             <span className="text-primary font-medium">
-              ${product.offerprice}
+              ${product.discount}
             </span>
             <span className="line-through text-black/50 font-medium">
-              ${product.mainprice}
+              ${product.price}
             </span>
           </>
         ) : !product.isStock ? (
           <span className="text-primary/80 font-medium">Out Of Stock</span>
         ) : (
-          <span className="text-primary font-medium">${product.mainprice}</span>
+          <span className="text-primary font-medium">${product.price}</span>
         )}
       </Flex>
       <Flex className="justify-start mt-2 gap-x-1">
