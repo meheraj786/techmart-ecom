@@ -6,6 +6,7 @@ import Container from "../layouts/Container";
 import { Link, useParams } from "react-router";
 import HelmetJs from "../layouts/HelmetJs";
 import { useProducts } from "../hooks/useProducts";
+import ProductCardSkeleton from "../components/productCard/ProductCardSkeleton";
 
 export default function Products() {
   const {data,isLoading,isError}=useProducts()
@@ -64,6 +65,7 @@ export default function Products() {
               <div className="mb-8">
                 <h3 className="text-lg font-semibold mb-4">Shop by Category</h3>
                 <div className="space-y-2">
+
                   {categories.map((cat, index) => (
                     <div key={index} className="flex items-center">
                       <Link to={`/products/${cat.toLowerCase()}`} className="text-gray-700 hover:text-black cursor-pointer">
@@ -106,6 +108,15 @@ export default function Products() {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                  {
+                    isLoading && (
+                      <>
+                      <ProductCardSkeleton/>
+                      <ProductCardSkeleton/>
+                      <ProductCardSkeleton/>
+                      </>
+                    )
+                  }
                 {data?.slice(0, itemsPerPage).map((product) => (
                   <ProductCard product={product} />
                 ))}

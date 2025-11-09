@@ -12,26 +12,89 @@ const ProductCard = ({ product }) => {
   }
 
   return (
+    // <div className="w-[270px] mx-auto">
+    //   <div className="w-full h-[250px] relative group overflow-hidden bg-[#F5F5F5] rounded-sm flex justify-center items-center text-transparent">
+    //     {product.offerprice && product.offerprice > 0 && product.isStock && (
+    //       <span className="px-3 py-1 absolute top-3 left-3 bg-primary rounded-sm text-white text-[12px]">
+    //         -{Math.round(((product.mainprice - product.offerprice) / product.mainprice) * 100)}%
+    //       </span>
+    //     )}
+    //     <Link to={`/product/${product.id}`}>
+    //     <img
+    //       src={product.image}
+    //       className="object-cover transition-all duration-250 object-center group-hover:scale-120"
+    //       alt=""
+    //     />
+    //     </Link>
+    //     <div className="bg-black cursor-pointer group-hover:translate-y-0 transition-all duration-300 absolute bottom-0 translate-y-full  left-0 rounded-b-sm text-white text-center font-medium py-2 w-full">
+    //       Add To Cart
+    //     </div>
+    //   </div>
+    //   <Link to={`/product/${product.id}`}>
+    //   <p className="font-medium hover:text-gray-500 mt-4 mb-2">{product.title}</p>
+    //   </Link>
+    //   <Flex className="justify-start gap-x-[12px]">
+    //     {product.offerprice && product.offerprice > 0 && product.isStock ? (
+    //       <>
+    //         <span className="text-primary font-medium">
+    //           ${product.offerprice}
+    //         </span>
+    //         <span className="line-through text-black/50 font-medium">
+    //           ${product.mainprice}
+    //         </span>
+    //       </>
+    //     ) : !product.isStock ? (
+    //       <span className="text-primary/80 font-medium">Out Of Stock</span>
+    //     ) : (
+    //       <span className="text-primary font-medium">${product.mainprice}</span>
+    //     )}
+    //   </Flex>
+    //   <Flex className="justify-start mt-2 gap-x-1">
+    //     {star.map(() => (
+    //       <BiSolidStar color="#FFAD33" />
+    //     ))}
+    //     {noStar.map(() => (
+    //       <BiSolidStar className="text-black/25" />
+    //     ))}
+    //     <span className="text-black/50 text-[12px] font-semibold">
+    //       ({product.rating})
+    //     </span>
+    //   </Flex>
+    //   {product?.colors?.map((color, i) => (
+    //     <span
+    //       key={i}
+    //       style={{ backgroundColor: color }}
+    //       className="w-4 h-4 mt-2 rounded-full inline-block mr-1"
+    //     ></span>
+    //   ))}
+    // </div>
     <div className="w-[270px] mx-auto">
       <div className="w-full h-[250px] relative group overflow-hidden bg-[#F5F5F5] rounded-sm flex justify-center items-center text-transparent">
         {product.offerprice && product.offerprice > 0 && product.isStock && (
           <span className="px-3 py-1 absolute top-3 left-3 bg-primary rounded-sm text-white text-[12px]">
-            -{Math.round(((product.mainprice - product.offerprice) / product.mainprice) * 100)}%
+            -
+            {Math.round(
+              ((product.mainprice - product.offerprice) / product.mainprice) *
+                100
+            )}
+            %
           </span>
         )}
         <Link to={`/product/${product.id}`}>
-        <img
-          src={product.image}
-          className="object-cover transition-all duration-250 object-center group-hover:scale-120"
-          alt=""
-        />
+          <img
+            src={product.image}
+            className="object-cover transition-all duration-250 object-center group-hover:scale-120"
+            alt=""
+          />
         </Link>
         <div className="bg-black cursor-pointer group-hover:translate-y-0 transition-all duration-300 absolute bottom-0 translate-y-full  left-0 rounded-b-sm text-white text-center font-medium py-2 w-full">
           Add To Cart
         </div>
       </div>
       <Link to={`/product/${product.id}`}>
-      <p className="font-medium hover:text-gray-500 mt-4 mb-2">{product.title}</p>
+        <p className="font-medium hover:text-gray-500 mt-4 mb-2 line-clamp-2">
+          {product.name}
+        </p>
       </Link>
       <Flex className="justify-start gap-x-[12px]">
         {product.offerprice && product.offerprice > 0 && product.isStock ? (
