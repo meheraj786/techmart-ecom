@@ -5,7 +5,7 @@ import sideImg from "../../public/SideImage.png";
 import { Link } from "react-router";
 import Flex from "../layouts/Flex";
 import HelmetJs from "../layouts/HelmetJs";
-import { useLogin } from "../hooks/useLogin";
+import { useLogin } from "../hooks/useAuth";
 import useUserStore from "../store/useUserStore";
 
 export default function Login() {
