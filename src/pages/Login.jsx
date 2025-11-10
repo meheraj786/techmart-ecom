@@ -20,8 +20,8 @@ export default function Login() {
     });
   };
 
-  const handleCreateAccount = () => {
-    console.log('Create account clicked:', formData);
+  const handleLogin = () => {
+    
   };
 
   const handleGoogleSignup = () => {
@@ -84,7 +84,7 @@ export default function Login() {
               </div>
               <Flex className="justify-between mt-6 mb-4">
               <button
-                onClick={handleCreateAccount}
+                onClick={handleLogin}
                 className="w-1/2 bg-primary hover:bg-primary/90 cursor-pointer text-white font-medium py-3 rounded-md transition duration-200 "
               >
                 Login
