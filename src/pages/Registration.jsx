@@ -34,8 +34,10 @@ export default function Registration() {
 
       mutate(credentials, {
         onSuccess: () => {
-          navigate("/login");
-          toast.success("Registration Successful");
+          navigate("/verify-otp", {
+            state: { email: formData.emailOrPhone },
+          });
+          toast.success("Registration Successful! Please verify your email");
         },
       });
     } catch (error) {

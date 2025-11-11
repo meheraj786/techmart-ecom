@@ -1,9 +1,17 @@
 import { create } from "zustand";
 
-const storedUser = JSON.parse(localStorage.getItem("user"));
+let storedUser = null;
+
+try {
+  const userData = localStorage.getItem("user");
+  storedUser = userData ? JSON.parse(userData) : null;
+} catch (error) {
+  console.error("Error parsing user from localStorage:", error);
+  storedUser = null;
+}
 
 const useUserStore = create((set) => ({
-  user: storedUser || null,
+  user: storedUser,
 
   setUser: (userData) => {
     localStorage.setItem("user", JSON.stringify(userData));
@@ -16,4 +24,4 @@ const useUserStore = create((set) => ({
   },
 }));
 
-export default useUserStore
+export default useUserStore;

@@ -19,6 +19,7 @@ import MyDashboard from "./pages/MyDashboard.jsx";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { queryClient } from "./client/queryClient.js";
 import { Toaster } from "react-hot-toast";
+import VerifyEmail from "./pages/VerifyEmail.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -33,8 +34,8 @@ const router = createBrowserRouter([
         element: <ProductDetailPage />,
       },
       {
-        path: "/verify-email",
-        element: <ProductDetailPage />,
+        path: "/verify-otp",
+        element: <VerifyEmail />,
       },
       {
         path: "/registration",

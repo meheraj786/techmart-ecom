@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import Container from "../layouts/Container";
 import sideImg from "../../public/SideImage.png";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import Flex from "../layouts/Flex";
 import HelmetJs from "../layouts/HelmetJs";
 import { useLogin } from "../hooks/useAuth";
@@ -11,6 +11,7 @@ import {toast} from 'react-hot-toast'
 
 export default function Login() {
   const {setUser} =useUserStore()
+  const navigate=useNavigate()
     const { mutate} = useLogin();
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
@@ -35,6 +36,7 @@ export default function Login() {
       onSuccess: (data) => {
         setUser(data.user);
         localStorage.setItem("token", data.token);
+        navigate("/my-account")
         toast.success("Login Successful")
       },
     });
