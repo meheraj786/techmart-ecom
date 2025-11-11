@@ -18,6 +18,7 @@ import MyAccount from "./pages/MyAccountPage.jsx";
 import MyDashboard from "./pages/MyDashboard.jsx";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { queryClient } from "./client/queryClient.js";
+import { Toaster } from "react-hot-toast";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
       },
       {
         path: "/product/:id",
+        element: <ProductDetailPage />,
+      },
+      {
+        path: "/verify-email",
         element: <ProductDetailPage />,
       },
       {
@@ -69,16 +74,12 @@ const router = createBrowserRouter([
         element: <MyAccount />,
       },
     ],
-  },
-  {
-    path: "/dashboard",
-    element: <MyDashboard />,
-    // element: <Dashboard />,
-  },
+  }
 ]);
 
 createRoot(document.getElementById("root")).render(
   <QueryClientProvider client={queryClient}>
+    <Toaster position="top-right"/>
     <RouterProvider router={router} />,
   </QueryClientProvider>
 );

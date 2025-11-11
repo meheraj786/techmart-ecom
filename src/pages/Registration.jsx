@@ -5,6 +5,7 @@ import sideImg from "../../public/SideImage.png";
 import { Link, useNavigate } from "react-router";
 import HelmetJs from "../layouts/HelmetJs";
 import { useRegister } from "../hooks/useAuth";
+import toast from "react-hot-toast";
 
 export default function Registration() {
   const [showPassword, setShowPassword] = useState(false);
@@ -31,8 +32,12 @@ export default function Registration() {
         password: formData.password,
       };
 
-      mutate(credentials);
-      navigate("/login");
+      mutate(credentials, {
+        onSuccess: () => {
+          navigate("/login");
+          toast.success("Registration Successful");
+        },
+      });
     } catch (error) {
       console.log(error);
     }

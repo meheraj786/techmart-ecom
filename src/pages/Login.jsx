@@ -7,6 +7,7 @@ import Flex from "../layouts/Flex";
 import HelmetJs from "../layouts/HelmetJs";
 import { useLogin } from "../hooks/useAuth";
 import useUserStore from "../store/useUserStore";
+import {toast} from 'react-hot-toast'
 
 export default function Login() {
   const {setUser} =useUserStore()
@@ -34,6 +35,7 @@ export default function Login() {
       onSuccess: (data) => {
         setUser(data.user);
         localStorage.setItem("token", data.token);
+        toast.success("Login Successful")
       },
     });
   };

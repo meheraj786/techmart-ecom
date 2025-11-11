@@ -57,7 +57,7 @@ const Navbar = () => {
               <BiCart size={26} />
             </Link>
             <Link
-              to="/dashboard"
+              to="/my-account"
               className="p-[10px] cursor-pointer hover:bg-primary rounded-full transition-colors duration-150 hover:text-white"
             >
               <BiUser size={26} />
