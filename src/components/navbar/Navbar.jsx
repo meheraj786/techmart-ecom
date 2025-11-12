@@ -2,12 +2,18 @@ import React, { useState } from "react";
 import Flex from "../../layouts/Flex";
 import Container from "../../layouts/Container";
 import Logo from "../../layouts/Logo";
-import { Link, NavLink } from "react-router";
+import { Link, NavLink, useNavigate } from "react-router";
 import { BiCart, BiHeart, BiUser } from "react-icons/bi";
 import { Menu } from "lucide-react";
+import useUserStore from "../../store/useUserStore";
+import toast from "react-hot-toast";
 
 const Navbar = () => {
-  const [isShow, setIsShow]=useState(false)
+  const [isShow, setIsShow] = useState(false);
+  const { user, logout } = useUserStore();
+  const navigate = useNavigate();
+  console.log(user);
+
   const navItems = [
     {
       name: "Home",
@@ -21,11 +27,12 @@ const Navbar = () => {
       name: "About",
       link: "/about",
     },
-    {
-      name: "Sign Up",
-      link: "/registration",
-    },
   ];
+  const handleLogout = () => {
+    logout();
+    navigate("/");
+    toast.success("Logout Successful");
+  };
   return (
     <div className="font-body mt-[47px] pb-[23px] border-b border-black/30">
       <Container>
@@ -42,66 +49,96 @@ const Navbar = () => {
                 {item.name}
               </NavLink>
             ))}
+            {user ? (
+              <button
+                onClick={handleLogout}
+                className="cursor-pointer"
+                to="/logout"
+              >
+                Logout
+              </button>
+            ) : (
+              <NavLink
+                to={"/login"}
+                className={({ isActive }) =>
+                  isActive ? "border-b" : "hover:border-b"
+                }
+              >
+                Login
+              </NavLink>
+            )}
           </Flex>
-          <Menu className="xl:hidden" onClick={()=>setIsShow(!isShow)}/>
+          <Menu className="xl:hidden" onClick={() => setIsShow(!isShow)} />
           <Flex className="justify-end hidden xl:flex gap-x-5">
             <input
               type="text"
               className="bg-[#F5F5F5] px-5 py-3 pr-[70px] rounded-s"
               placeholder="What are you looking for?"
             />
-            <Link to="/wishlist" className="p-[10px] cursor-pointer hover:bg-primary rounded-full transition-colors duration-150 hover:text-white">
-              <BiHeart size={26} />
-            </Link>
-            <Link to="/cart" className="p-[10px] cursor-pointer hover:bg-primary rounded-full transition-colors duration-150 hover:text-white">
-              <BiCart size={26} />
-            </Link>
             <Link
-              to="/my-account"
+              to="/wishlist"
               className="p-[10px] cursor-pointer hover:bg-primary rounded-full transition-colors duration-150 hover:text-white"
             >
-              <BiUser size={26} />
+              <BiHeart size={26} />
             </Link>
+            <Link
+              to="/cart"
+              className="p-[10px] cursor-pointer hover:bg-primary rounded-full transition-colors duration-150 hover:text-white"
+            >
+              <BiCart size={26} />
+            </Link>
+            {user && (
+              <Link
+                to="/my-account"
+                className="p-[10px] cursor-pointer hover:bg-primary rounded-full transition-colors duration-150 hover:text-white"
+              >
+                <BiUser size={26} />
+              </Link>
+            )}
           </Flex>
         </Flex>
-          {
-            isShow && (
-              <>
-              <Flex className="justify-center mt-10 flex-col xl:hidden gap-y-[18px]">
-            {navItems.map((item) => (
-              <NavLink
-                to={item.link}
-                onClick={()=>setIsShow(false)}
-                className={({ isActive }) =>
-                  isActive ? "border-b" : "hover:border-b"
-                }
+        {isShow && (
+          <>
+            <Flex className="justify-center mt-10 flex-col xl:hidden gap-y-[18px]">
+              {navItems.map((item) => (
+                <NavLink
+                  to={item.link}
+                  onClick={() => setIsShow(false)}
+                  className={({ isActive }) =>
+                    isActive ? "border-b" : "hover:border-b"
+                  }
+                >
+                  {item.name}
+                </NavLink>
+              ))}
+            </Flex>
+            <Flex className="justify-center xl:hidden gap-x-5">
+              <input
+                type="text"
+                className="bg-[#F5F5F5] px-5 my-5 py-3 pr-[70px] w-full rounded-s"
+                placeholder="What are you looking for?"
+              />
+              <Link
+                to="/wishlist"
+                className="p-[10px] cursor-pointer hover:bg-primary rounded-full transition-colors duration-150 hover:text-white"
               >
-                {item.name}
-              </NavLink>
-            ))}
-          </Flex>
-          <Flex className="justify-center xl:hidden gap-x-5">
-            <input
-              type="text"
-              className="bg-[#F5F5F5] px-5 my-5 py-3 pr-[70px] w-full rounded-s"
-              placeholder="What are you looking for?"
-            />
-            <Link to="/wishlist" className="p-[10px] cursor-pointer hover:bg-primary rounded-full transition-colors duration-150 hover:text-white">
-              <BiHeart size={26} />
-            </Link>
-            <Link to="/cart" className="p-[10px] cursor-pointer hover:bg-primary rounded-full transition-colors duration-150 hover:text-white">
-              <BiCart size={26} />
-            </Link>
-            <Link
-              to="/dashboard"
-              className="p-[10px] cursor-pointer hover:bg-primary rounded-full transition-colors duration-150 hover:text-white"
-            >
-              <BiUser size={26} />
-            </Link>
-          </Flex>
-              </>
-            )
-          }
+                <BiHeart size={26} />
+              </Link>
+              <Link
+                to="/cart"
+                className="p-[10px] cursor-pointer hover:bg-primary rounded-full transition-colors duration-150 hover:text-white"
+              >
+                <BiCart size={26} />
+              </Link>
+              <Link
+                to="/dashboard"
+                className="p-[10px] cursor-pointer hover:bg-primary rounded-full transition-colors duration-150 hover:text-white"
+              >
+                <BiUser size={26} />
+              </Link>
+            </Flex>
+          </>
+        )}
       </Container>
     </div>
   );

@@ -4,7 +4,7 @@ import axios from "axios";
 const baseUrl = import.meta.env.VITE_BASE_URL;
 
 const login = async (credentials) => {
-  const res = await axios.post(`${baseUrl}auth/login`, credentials);
+  const res = await axios.post(`${baseUrl}auth/login`, credentials, {withCredentials: true});
   return res.data.data;
 };
 const register = async (credentials) => {

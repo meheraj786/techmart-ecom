@@ -34,7 +34,9 @@ export default function Login() {
 
     mutate(credentials, {
       onSuccess: (data) => {
-        setUser(data.user);
+        console.log(data);
+        
+        setUser(data);
         localStorage.setItem("token", data.token);
         navigate("/my-account")
         toast.success("Login Successful")

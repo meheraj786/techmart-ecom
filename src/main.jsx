@@ -20,6 +20,7 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { queryClient } from "./client/queryClient.js";
 import { Toaster } from "react-hot-toast";
 import VerifyEmail from "./pages/VerifyEmail.jsx";
+import ProtectedRouteForUser from "./components/protectedRoute/ProtectedRouteForUser.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -72,7 +73,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/my-account",
-        element: <MyAccount />,
+        element: <ProtectedRouteForUser> <MyAccount /></ProtectedRouteForUser>,
       },
     ],
   }

@@ -14,8 +14,13 @@ const useUserStore = create((set) => ({
   user: storedUser,
 
   setUser: (userData) => {
-    localStorage.setItem("user", JSON.stringify(userData));
-    set({ user: userData });
+    if (userData) {
+      localStorage.setItem("user", JSON.stringify(userData));
+      set({ user: userData });
+    } else {
+      localStorage.removeItem("user");
+      set({ user: null });
+    }
   },
 
   logout: () => {
