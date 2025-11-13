@@ -7,6 +7,7 @@ const login = async (credentials) => {
   const res = await axios.post(`${baseUrl}auth/login`, credentials, {withCredentials: true});
   return res.data.data;
 };
+
 const register = async (credentials) => {
   const res = await axios.post(`${baseUrl}auth/register`, credentials);
   return res.data.data;
